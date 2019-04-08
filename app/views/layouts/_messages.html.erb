@@ -1,0 +1,12 @@
+<% flash.each do |type, msg| %>
+  <div class="mt-3 alert alert-<%= flash_type(type) %> alert-dismissible fade show" role="alert">
+    <ul class="mb-0">
+      <li>
+        <%= msg %>
+      </li>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
