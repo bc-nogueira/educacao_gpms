@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # NOSSAS GEMS:
 
+# Rails view helper to manage "active" state of a link
+gem 'active_link_to', '~> 1.0', '>= 1.0.5'
 # Framework CSS
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 # jQuery for Bootstrap
