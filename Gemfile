@@ -42,6 +42,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'active_link_to', '~> 1.0', '>= 1.0.5'
 # Framework CSS
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+# Autenticação
+gem 'devise', '~> 4.6', '>= 4.6.2'
 # jQuery for Bootstrap
 gem 'jquery-rails'
 

@@ -19,7 +19,9 @@
         <a class="nav-link" href="#">Professores</a>
       </li>
     </ul>
-    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Cadastrar</button>
-    <button class="btn btn-outline-primary my-2 ml-2 my-sm-0" type="submit">Entrar</button>
+    <%= active_link_to 'Cadastrar', new_user_registration_path,
+                class: 'btn btn-outline-secondary my-2 my-sm-0' %>
+    <%= active_link_to 'Entrar', new_user_session_path,
+                class: 'btn btn-outline-primary my-2 ml-2 my-sm-0' %>
   </div>
 </nav>
