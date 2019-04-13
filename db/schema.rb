@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_131203) do
+ActiveRecord::Schema.define(version: 2019_04_13_190645) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_courses", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "course_id", null: false
+    t.index ["category_id", "course_id"], name: "index_categories_courses_on_category_id_and_course_id"
+  end
+
+  create_table "course_ratings", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+    t.integer "rate"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_ratings_on_course_id"
+    t.index ["student_id"], name: "index_course_ratings_on_student_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -21,13 +44,66 @@ ActiveRecord::Schema.define(version: 2019_04_08_131203) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "courses_purchases", id: false, force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "purchase_id", null: false
+    t.index ["course_id", "purchase_id"], name: "index_courses_purchases_on_course_id_and_purchase_id"
+  end
+
+  create_table "courses_students", id: false, force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "student_id", null: false
+    t.index ["course_id", "student_id"], name: "index_courses_students_on_course_id_and_student_id"
+  end
+
+  create_table "courses_teachers", id: false, force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "teacher_id", null: false
+    t.index ["course_id", "teacher_id"], name: "index_courses_teachers_on_course_id_and_teacher_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_purchases_on_student_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_students_on_user_id"
+  end
+
+  create_table "teacher_ratings", force: :cascade do |t|
+    t.integer "teacher_id"
+    t.integer "student_id"
+    t.integer "rate"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_teacher_ratings_on_student_id"
+    t.index ["teacher_id"], name: "index_teacher_ratings_on_teacher_id"
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string "phone_number"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_teachers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name", null: false
+    t.string "cpf", null: false
+    t.date "birthdate", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
