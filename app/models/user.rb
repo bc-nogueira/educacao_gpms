@@ -6,5 +6,8 @@ class User < ApplicationRecord
 
   has_one :student
   has_one :teacher # TODO: Verificar se precisa colocar optional: true
+
+  accepts_nested_attributes_for :student
+
   enum gender: [:female, :male, :other]
 end

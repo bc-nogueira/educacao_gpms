@@ -19,6 +19,35 @@
       </div>
 
       <div class="row">
+        <div class="form-group col-4">
+          <%= f.label :cpf %>
+          <%= f.text_field :cpf, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-4">
+          <%= f.label :gender %>
+          <%= f.select :gender,
+                       [['Feminino', :female], ['Masculino', :male], ['Outro', :other]],
+                       { include_blank: 'Selecione seu sexo' },
+                       class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-4">
+          <%= f.label :birthdate %>
+          <%= f.date_field :birthdate, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-6">
+
+        </div>
+
+        <div class="form-group col-6">
+        </div>
+      </div>
+
+      <div class="row">
         <div class="form-group col-6">
           <%= f.label :password %>
           <% if @minimum_password_length %>

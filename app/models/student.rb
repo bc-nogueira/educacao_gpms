@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
 
   has_many :course_ratings
   has_many :purchases
