@@ -10,4 +10,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :student
 
   enum gender: [:female, :male, :other]
+
+  def teacher?
+    teacher.present?
+  end
 end
