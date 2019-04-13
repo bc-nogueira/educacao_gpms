@@ -1,6 +1,9 @@
 class TeachersController < ApplicationController
+  def index
+    @teachers = Teacher.all
+  end
+
   def new
-    # current_user.teacher = Teacher.new
     @teacher = Teacher.new
   end
 

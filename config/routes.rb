@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   resources :courses, only: :index
   resources :home, only: :index
-  resources :teachers, only: [:new, :create]
+  resources :teachers, only: [:index, :new, :create]
 end

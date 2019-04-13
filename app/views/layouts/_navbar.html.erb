@@ -16,7 +16,7 @@
         <%= active_link_to 'Cursos', courses_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Professores</a>
+        <%= active_link_to 'Professores', teachers_path, class: 'nav-link' %>
       </li>
     </ul>
     <% if user_signed_in? %>

@@ -1,0 +1,13 @@
+<h1>Professores</h1>
+
+<% if @teachers.any? %>
+  <ul>
+    <% @teachers.each do |teacher| %>
+      <li><%= teacher.user.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="alert alert-warning">
+    Não existem professores cadastrados!
+  </div>
+<% end %>
