@@ -8,9 +8,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :encrypted_password, null: false, default: ""
 
       # Our project attributes
-      t.string :name, null: false
-      t.string :cpf, null: false
       t.date :birthdate, null: false
+      t.string :cpf, null: false
+      t.integer :gender, null: false
+      t.string :name, null: false
 
 
       ## Recoverable

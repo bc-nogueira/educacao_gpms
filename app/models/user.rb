@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_one :student
   has_one :teacher # TODO: Verificar se precisa colocar optional: true
+  enum gender: [:female, :male, :other]
 end
