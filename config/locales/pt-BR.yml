@@ -1,4 +1,4 @@
-pt-br:
+pt-BR:
   activerecord:
     errors:
       messages:
@@ -13,8 +13,14 @@ pt-br:
         birthdate: 'Data de Nascimento'
         cpf: 'CPF'
         gender: 'Sexo'
-        password: 'Senha'
+        name: 'Nome'
       course:
+        description: 'Descrição'
+        name: 'Nome'
+        price: 'Preço'
+        syllabus: 'Ementa'
+      teacher:
+        phone_number: 'Telefone'
   date:
     abbr_day_names:
       - Dom

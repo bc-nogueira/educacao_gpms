@@ -1,6 +1,6 @@
 <div class="card w-75 mx-auto mt-3">
   <div class="card-header">
-    <h3 class="mb-0">Log in</h3>
+    <h3 class="mb-0"><%= t('devise.sessions.new.sign_in') %></h3>
   </div>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="card-body">
@@ -27,7 +27,7 @@
     </div>
     <div class="card-footer">
       <div class="actions">
-        <%= f.submit 'Log in', class: 'btn btn-success' %>
+        <%= f.submit t('devise.sessions.new.sign_in'), class: 'btn btn-success' %>
         <%= render 'devise/shared/links' %>
       </div>
     </div>
