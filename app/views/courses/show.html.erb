@@ -1,5 +1,9 @@
 <h1><%= @course.name %></h1>
-<h3><%= @course.teacher.user.name %></h3>
+<h3>
+  <%= link_to teacher_path(@course.teacher) do %>
+    <%= @course.teacher.user.name %>
+  <% end %>
+</h3>
 
 <div class="card mb-3">
   <div class="card-body">

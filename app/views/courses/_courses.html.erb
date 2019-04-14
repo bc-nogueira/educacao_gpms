@@ -4,7 +4,12 @@
       <div class="card w-75 mx-auto">
         <div class="card-body">
           <h5 class="card-title"><%= course.name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted">por <%= course.teacher.user.name %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            por
+            <%= link_to teacher_path(course.teacher) do %>
+              <%= course.teacher.user.name %>
+            <% end %>
+          </h6>
           <p class="card-text"><%= course.description %></p>
           <%= link_to 'Info', course_path(course), class: 'card-link' %>
           <% unless course_teacher?(course) %>
