@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     end
   end
   resources :home, only: :index
-  resources :teachers, only: [:index, :new, :create]
+  resources :teachers, only: [:index, :show, :new, :create]
 end

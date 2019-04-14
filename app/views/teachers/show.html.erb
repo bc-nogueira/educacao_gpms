@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-5 text-center">
+      <%= image_tag 'http://i64.tinypic.com/344qrzd.jpg', class: 'img-fluid' %>
+    </div>
+
+    <div class="col-7">
+      <h1><%= @teacher.user.name %></h1>
+      <h3><%= @teacher.user.email %></h3>
+      <h3><%= @teacher.user.cpf %></h3>
+      <h3><%= @teacher.phone_number %></h3>
+      <h3><%= @teacher.courses.size %> courso(s)</h3>
+    </div>
+  </div>
+
+  <h2>Cursos</h2>
+
+  <%= render partial: 'courses/courses', locals: { courses: @teacher.courses } %>
+</div>
