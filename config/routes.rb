@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :home, only: :index
-  resources :orders, only: :index do
+  resources :orders, only: :show do
     member do
       get 'add_course'
     end

@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: :add_course
 
-  def index
+  def show
+    binding.pry
     @order = helpers.current_order
   end
 
@@ -9,7 +10,7 @@ class OrdersController < ApplicationController
     @order = set_order
     @order.course_orders.create(course_id: params[:id])
     flash[:notice] = 'Curso adicionado ao carrinho.'
-    redirect_to orders_path
+    redirect_to order_path
   end
 
   private
