@@ -13,7 +13,7 @@
     <% @order.courses.each do |course| %>
       <tr>
         <td><%= course.name %></td>
-        <td><%= course.price %></td>
+        <td><%= number_to_currency course.price %></td>
         <td>
           <%= link_to 'Remover', remove_course_order_path(course), method: :delete,
                       data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>

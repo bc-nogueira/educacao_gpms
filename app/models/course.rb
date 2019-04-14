@@ -1,6 +1,4 @@
 class Course < ApplicationRecord
-  monetize :price_cents
-
   belongs_to :teacher
 
   has_many :course_ratings
