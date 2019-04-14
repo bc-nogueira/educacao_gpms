@@ -1,11 +1,7 @@
 <h1>Professores</h1>
 
 <% if @teachers.any? %>
-  <ul>
-    <% @teachers.each do |teacher| %>
-      <li><%= teacher.user.name %></li>
-    <% end %>
-  </ul>
+  <%= render partial: 'teachers/teachers', locals: { teachers: @teachers } %>
 <% else %>
   <div class="alert alert-warning">
     Não existem professores cadastrados!

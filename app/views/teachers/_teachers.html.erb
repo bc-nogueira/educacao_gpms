@@ -1,0 +1,14 @@
+<div class="row">
+  <% teachers.each do |teacher| %>
+    <div class="col-12 col-sm-6 col-xl-4 mb-4">
+      <div class="card w-75 mx-auto">
+        <div class="card-body">
+          <h5 class="card-title"><%= teacher.user.name %></h5>
+          <h6 class="card-subtitle"><%= teacher.courses.count %> curso(s)</h6>
+          <p class="card-text"><%= teacher.user.email %></p>
+          <a href="#" class="card-link">Detalhes</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
