@@ -1,17 +1,7 @@
 <h1>Cursos</h1>
 
-<div class="row">
-  <% @courses.each do |course| %>
-    <div class="col-12 col-sm-6 col-xl-4 mb-4">
-      <div class="card w-75 mx-auto">
-        <div class="card-body">
-          <h5 class="card-title"><%= course.name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Nome do professor</h6>
-          <p class="card-text"><%= course.description %></p>
-          <a href="#" class="card-link">Info</a>
-          <a href="#" class="card-link">Comprar</a>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<% if user_signed_in? && current_user.teacher? %>
+  <%= link_to 'Meus cursos', teacher_courses_courses_path, class: 'btn btn-primary mb-4' %>
+<% end %>
+
+<%= render partial: 'courses/courses', locals: { courses: @courses } %>

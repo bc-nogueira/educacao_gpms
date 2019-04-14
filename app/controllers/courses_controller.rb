@@ -3,9 +3,12 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
 
+  def teacher_courses
+    @courses = Course.by_teacher(current_user.teacher)
+  end
+
   def new
     @course = Course.new
-    # binding.pry
   end
 
   def create
