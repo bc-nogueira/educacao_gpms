@@ -2,24 +2,30 @@
   <% courses.each do |course| %>
     <div class="col-12 col-sm-6 col-xl-4 mb-4">
       <div class="card w-75 mx-auto">
-        <div class="card-body">
-          <h5 class="card-title"><%= course.name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted">
-            por
-            <%= link_to teacher_path(course.teacher) do %>
-              <%= course.teacher.user.name %>
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title"><%= course.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              por
+              <%= link_to teacher_path(course.teacher) do %>
+                <%= course.teacher.user.name %>
+              <% end %>
+            </h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= course.description %></p>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <%= link_to 'Info', course_path(course), class: 'btn btn-primary' %>
+            <% unless course_teacher?(course) %>
+              <% unless has_order? && order_has_course?(course) %>
+                <%= link_to 'Adicionar ao Carrinho', add_course_order_path(course),
+                            class: 'btn btn-success' %>
+              <% else %>
+                <span class="btn btn-outline-success disabled">Curso no carrinho!</span>
+              <% end %>
             <% end %>
-          </h6>
-          <p class="card-text"><%= course.description %></p>
-          <%= link_to 'Info', course_path(course), class: 'card-link' %>
-          <% unless course_teacher?(course) %>
-            <% unless has_order? && order_has_course?(course) %>
-              <%= link_to 'Adicionar ao Carrinho', add_course_order_path(course),
-                          class: 'card-link' %>
-            <% else %>
-              <p class="">Curso no carrinho!</p>
-            <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
