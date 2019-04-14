@@ -1,7 +1,21 @@
+<%= render 'courses/search_form' %>
+
 <h2>Cursos</h2>
 
-<%= render partial: 'courses/courses', locals: { courses: @courses } %>
+<% if @courses.any? %>
+  <%= render partial: 'courses/courses', locals: { courses: @courses } %>
+<% else %>
+  <div class="alert alert-warning">
+    Não existem cursos cadastrados!
+  </div>
+<% end %>
 
 <h2>Professores</h2>
 
-<%= render partial: 'teachers/teachers', locals: { teachers: @teachers } %>
+<% if @teachers.any? %>
+  <%= render partial: 'teachers/teachers', locals: { teachers: @teachers } %>
+<% else %>
+  <div class="alert alert-warning">
+    Não existem professores cadastrados!
+  </div>
+<% end %>

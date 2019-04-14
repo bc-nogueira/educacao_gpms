@@ -1,7 +1,15 @@
 <h1>Cursos</h1>
 
+<%= render 'courses/search_form' %>
+
 <% if user_signed_in? && current_user.teacher? %>
   <%= link_to 'Meus cursos', teacher_courses_courses_path, class: 'btn btn-primary mb-4' %>
 <% end %>
 
-<%= render partial: 'courses/courses', locals: { courses: @courses } %>
+<% if @courses.any? %>
+  <%= render partial: 'courses/courses', locals: { courses: @courses } %>
+<% else %>
+  <div class="alert alert-warning">
+    Não existem cursos cadastrados!
+  </div>
+<% end %>

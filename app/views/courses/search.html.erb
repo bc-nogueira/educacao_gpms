@@ -1,0 +1,15 @@
+<h1>Resultado</h1>
+
+<%= render 'courses/search_form' %>
+
+<% if @courses.any? %>
+  <div class="w-75 mx-auto alert alert-success">
+    Foram encontrados <%= @courses.size %> cursos!
+  </div>
+
+  <%= render partial: 'courses/courses', locals: { courses: @courses } %>
+<% else %>
+  <div class="w-75 mx-auto alert alert-warning">
+    Não foi encontrado nenhum curso com o termo <span class="font-weight-bold"><%= params[:search] %></span>!
+  </div>
+<% end %>

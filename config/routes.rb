@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :courses, only: [:index, :new, :create] do
-    get 'teacher_courses', on: :collection
+    collection do
+      get 'search'
+      get 'teacher_courses'
+    end
   end
   resources :home, only: :index
   resources :teachers, only: [:index, :new, :create]
