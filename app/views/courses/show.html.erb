@@ -1,0 +1,19 @@
+<h1><%= @course.name %></h1>
+<h3><%= @course.teacher.user.name %></h3>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Descrição</h5>
+    <p class="card-text"><%= @course.description %></p>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Ementa</h5>
+    <p class="card-text"><%= @course.syllabus %></p>
+  </div>
+</div>
+
+<h4>R$<%= @course.value %></h4>
+<a href="#" class="btn btn-success">Comprar</a>

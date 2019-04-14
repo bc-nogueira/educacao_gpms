@@ -3,9 +3,12 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
 
+  def show
+    @course = Course.find(params[:id])
+  end
+
   def search
     @courses = Course.by_name_like(params[:search])
-    # render :index
   end
 
   def teacher_courses
