@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_190645) do
     t.string "name"
     t.string "description"
     t.string "syllabus"
-    t.integer "value"
+    t.integer "price_cents"
     t.integer "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

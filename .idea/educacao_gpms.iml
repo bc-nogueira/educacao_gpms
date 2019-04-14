@@ -76,6 +76,9 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.0.1, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_portile2 (v2.4.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.11.3, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="monetize (v1.9.1, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="money (v6.13.2, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="money-rails (v1.13.1, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.2.9, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.13.1, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.3.1, RVM: ruby-2.6.1) [gem]" level="application" />

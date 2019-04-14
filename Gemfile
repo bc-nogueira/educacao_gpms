@@ -44,6 +44,7 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'devise', '~> 4.6', '>= 4.6.2'
 # jQuery for Bootstrap
 gem 'jquery-rails'
+gem 'money-rails', '~> 1.13', '>= 1.13.1'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8'

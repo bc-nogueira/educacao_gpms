@@ -15,5 +15,5 @@
   </div>
 </div>
 
-<h4>R$<%= @course.value %></h4>
+<h4><%= humanized_money_with_symbol @course.price %></h4>
 <a href="#" class="btn btn-success">Comprar</a>

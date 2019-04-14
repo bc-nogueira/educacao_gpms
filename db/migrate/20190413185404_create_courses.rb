@@ -4,7 +4,7 @@ class CreateCourses < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :description
       t.string :syllabus
-      t.integer :value
+      t.monetize :price_cents
 
       t.references :teacher, foreign_key: true
 
