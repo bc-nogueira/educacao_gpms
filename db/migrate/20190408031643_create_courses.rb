@@ -6,6 +6,8 @@ class CreateCourses < ActiveRecord::Migration[5.2]
       t.string :syllabus
       t.integer :value
 
+      t.references :teacher, foreign_key: true
+
       t.timestamps
     end
   end

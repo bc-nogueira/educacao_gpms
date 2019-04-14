@@ -1,0 +1,23 @@
+<div class="dropdown">
+  <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Bem-vindo &nbsp<span class="font-weight-bold"><%= current_user.name %></span>!
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <% unless current_user.teacher? %>
+      <%= link_to 'Quero ser professor', new_teacher_path,
+                  class: 'dropdown-item' %>
+    <% end %>
+    <a class="dropdown-item disabled" href="#">Atualizar dados</a>
+    <div class="dropdown-divider"></div>
+
+    <% if current_user.teacher? %>
+      <%= link_to 'Novo curso', new_course_path, class: 'dropdown-item' %>
+      <a class="dropdown-item disabled" href="#">Meus cursos</a>
+      <div class="dropdown-divider"></div>
+    <% end %>
+
+    <%= link_to 'Sair', destroy_user_session_path, method: :delete,
+                class: 'dropdown-item' %>
+  </div>
+</div>

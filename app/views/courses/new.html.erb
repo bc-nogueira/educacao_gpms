@@ -1,0 +1,48 @@
+<div class="card w-75 mx-auto mt-3">
+  <div class="card-header">
+    <h3 class="mb-0">Novo Curso</h3>
+  </div>
+  <%= form_with model: @course, local: true do |f| %>
+    <div class="card-body">
+      <% if @course.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <h5>A validação falhou:</h5>
+
+          <ul class="mb-0">
+            <% @course.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.hidden_field :teacher_id, value: current_user.teacher.id %>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control', required: true %>
+          </div>
+          <div class="col-6">
+            <%= f.label :value %>
+            <%= f.number_field :value, class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control', required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :syllabus %>
+        <%= f.text_area :syllabus, class: 'form-control', required: true %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= f.submit 'Salvar', class: 'btn btn-success' %>
+      <%= link_to 'Voltar', :back, class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>
