@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     end
   end
   resources :home, only: :index
-  resources :orders, only: :show do
+  resources :orders, only: [:show] do
     member do
       get 'add_course'
+      delete 'remove_course'
     end
   end
   resources :teachers, only: [:index, :show, :new, :create]
