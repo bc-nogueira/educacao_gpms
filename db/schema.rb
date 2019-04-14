@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_190645) do
+ActiveRecord::Schema.define(version: 2019_04_14_185511) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "situation"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_carts_on_student_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -22,6 +30,16 @@ ActiveRecord::Schema.define(version: 2019_04_13_190645) do
     t.integer "category_id", null: false
     t.integer "course_id", null: false
     t.index ["category_id", "course_id"], name: "index_categories_courses_on_category_id_and_course_id"
+  end
+
+  create_table "course_orders", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "order_id"
+    t.integer "final_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_orders_on_course_id"
+    t.index ["order_id"], name: "index_course_orders_on_order_id"
   end
 
   create_table "course_ratings", force: :cascade do |t|
@@ -56,6 +74,14 @@ ActiveRecord::Schema.define(version: 2019_04_13_190645) do
     t.integer "course_id", null: false
     t.integer "student_id", null: false
     t.index ["course_id", "student_id"], name: "index_courses_students_on_course_id_and_student_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "situation"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_orders_on_student_id"
   end
 
   create_table "purchases", force: :cascade do |t|

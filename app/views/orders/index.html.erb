@@ -1,0 +1,28 @@
+<h1>Carrinho</h1>
+
+<% if has_order? %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Curso</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Remover</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @order.courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.price %></td>
+        <td>Remover</td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-warning">
+    Seu carrinho está vazio!
+  </div>
+<% end %>
+
+

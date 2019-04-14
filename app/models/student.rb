@@ -2,6 +2,7 @@ class Student < ApplicationRecord
   belongs_to :user, dependent: :destroy
 
   has_many :course_ratings
+  has_many :orders
   has_many :purchases
   has_many :teacher_ratings
 
