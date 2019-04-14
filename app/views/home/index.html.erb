@@ -1,1 +1,7 @@
-<h1>Home</h1>
+<h2>Cursos</h2>
+
+<%= render partial: 'courses/courses', locals: { courses: @courses } %>
+
+<h2>Professores</h2>
+
+<%= render partial: 'teachers/teachers', locals: { teachers: @teachers } %>

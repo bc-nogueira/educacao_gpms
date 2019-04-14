@@ -1,3 +1,6 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @courses = Course.all
+    @teachers = Teacher.all
+  end
 end
