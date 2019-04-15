@@ -9,5 +9,4 @@ class Course < ApplicationRecord
   has_and_belongs_to_many :students
 
   scope :by_name_like, ->(name) { where('name LIKE ?', "%#{name}%") }
-  scope :by_teacher, ->(teacher_id) { where(teacher_id: teacher_id) }
 end

@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
   end
 
   def teacher_courses
-    @courses = Course.by_teacher(current_user.teacher)
+    @courses = current_user.teacher.courses
   end
 
   def new
