@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:remove_course, :pay, :finalize]
 
   def student_orders
-    @orders = current_user.student.orders
+    @orders = current_user.student.orders.closed
   end
 
   def show
