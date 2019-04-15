@@ -11,6 +11,10 @@ class CoursesController < ApplicationController
     @courses = Course.by_name_like(params[:search])
   end
 
+  def student_courses
+    @courses = current_user.student.courses
+  end
+
   def teacher_courses
     @courses = Course.by_teacher(current_user.teacher)
   end

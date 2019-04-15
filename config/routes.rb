@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :courses, only: [:index, :show, :new, :create] do
     collection do
       get 'search'
+      get 'student_courses'
       get 'teacher_courses'
     end
   end
