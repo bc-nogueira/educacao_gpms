@@ -17,13 +17,21 @@
           </div>
           <div class="card-footer d-flex justify-content-between">
             <%= link_to 'Info', course_path(course), class: 'btn btn-primary' %>
-            <% unless course_teacher?(course) %>
-              <% unless has_order? && order_has_course?(course) %>
-                <%= link_to 'Adicionar ao Carrinho', add_course_order_path(course),
-                            class: 'btn btn-success' %>
-              <% else %>
-                <span class="btn btn-outline-success disabled">Curso no carrinho!</span>
+
+
+            <% if user_signed_in? %>
+              <% unless course_teacher?(course) %>
+                <% unless has_order? && order_has_course?(course) %>
+                  <%= link_to 'Adicionar ao Carrinho', add_course_order_path(course),
+                              class: 'btn btn-success' %>
+                <% else %>
+                  <span class="btn btn-outline-success disabled">Curso no carrinho!</span>
+                <% end %>
               <% end %>
+            <% else %>
+              <%= active_link_to 'Entre para comprar!',
+                                 new_user_session_path,
+                                 class: 'btn btn-outline-success' %>
             <% end %>
           </div>
         </div>
