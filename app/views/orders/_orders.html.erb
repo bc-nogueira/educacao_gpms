@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col" class="w-50">Curso</th>
+    <th scope="col" class="w-25">Preço</th>
+    <th scope="col" class="w-25">Remover</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @order.courses.each do |course| %>
+    <tr>
+      <td><%= course.name %></td>
+      <td><%= number_to_currency course.price %></td>
+      <td>
+        <%= link_to 'Remover', remove_course_order_path(course), method: :delete,
+                    data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
