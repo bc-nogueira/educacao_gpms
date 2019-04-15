@@ -1,0 +1,24 @@
+<h1>Meus Pedidos</h1>
+
+<div class="accordion" id="accordionStudentOrders">
+  <% @orders.each do |order| %>
+    <div class="card" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125)">
+      <div class="card-header" id="heading<%= order.id %>">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= order.id %>" aria-expanded="true" aria-controls="collapseOne">
+            Pedido #<%= order.id %>
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapse<%= order.id %>" class="collapse"
+           aria-labelledby="heading<%= order.id %>" data-parent="#accordionStudentOrders">
+        <div class="card-body">
+          <%= render partial: 'orders/order', locals: {order: order } %>
+          <h5>Total <%= number_to_currency order.courses.sum(&:price) %></h5>
+          <span>Realizado em <%= order.created_at.strftime("%-d/%m/%Y as %H:%M") %></span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,6 +1,6 @@
 <h1>Finalizando Compra</h1>
 
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionPay">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
@@ -10,24 +10,10 @@
       </h2>
     </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionPay">
       <div class="card-body">
-        <table class="table">
-          <thead>
-          <tr>
-            <th scope="col" class="w-75">Curso</th>
-            <th scope="col" class="w-25">Preço</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @order.courses.each do |course| %>
-            <tr>
-              <td><%= course.name %></td>
-              <td><%= number_to_currency course.price %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+        <%= render partial: 'orders/order', locals: { order: @order } %>
+        <h5>Total <%= number_to_currency @order.courses.sum(&:price) %></h5>
       </div>
     </div>
   </div>
@@ -39,7 +25,7 @@
         </button>
       </h2>
     </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPay">
       <div class="card-body">
         <%= link_to 'Finalizar', finalize_order_path, class: 'btn btn-success' %>
       </div>

@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   before_action :set_order, only: :add_course
   before_action :find_order, only: [:remove_course, :pay, :finalize]
 
+  def student_orders
+    @orders = current_user.student.orders
+  end
+
   def show
     @order = Order.find(params[:id])
   end

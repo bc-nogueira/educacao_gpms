@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   end
   resources :home, only: :index
   resources :orders, only: [:show] do
+    collection do
+      get 'student_orders'
+    end
     member do
       delete 'remove_course'
       get 'add_course'

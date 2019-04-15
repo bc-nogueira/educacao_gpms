@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" class="w-75">Curso</th>
+    <th scope="col" class="w-25">Preço</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% order.courses.each do |course| %>
+    <tr>
+      <td><%= course.name %></td>
+      <td><%= number_to_currency course.price %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
