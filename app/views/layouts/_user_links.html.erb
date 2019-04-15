@@ -18,7 +18,7 @@
 
     <% if current_user.teacher? %>
       <%= link_to 'Novo curso', new_course_path, class: 'dropdown-item' %>
-      <%= link_to 'Meus cursos', teacher_courses_courses_path, class: 'dropdown-item' %>
+      <%= link_to 'Minhas Turmas', teacher_courses_courses_path, class: 'dropdown-item' %>
       <div class="dropdown-divider"></div>
     <% end %>
 

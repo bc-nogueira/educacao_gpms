@@ -3,7 +3,7 @@
 <%= render 'courses/search_form' %>
 
 <% if user_signed_in? && current_user.teacher? %>
-  <%= link_to 'Meus cursos', teacher_courses_courses_path, class: 'btn btn-primary mb-4' %>
+  <%= link_to 'Minhas Turmas', teacher_courses_courses_path, class: 'btn btn-primary mb-4' %>
 <% end %>
 
 <% if @courses.any? %>
