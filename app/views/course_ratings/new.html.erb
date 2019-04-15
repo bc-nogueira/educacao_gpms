@@ -1,0 +1,21 @@
+<h1>Avaliando curso: <%= @course.name %></h1>
+
+<%= form_with model: @course_rating, local: true do |f| %>
+  <%= f.hidden_field :course_id, value: @course.id %>
+  <%= f.hidden_field :student_id, value: current_user.student.id %>
+
+  <div class="card-body">
+    <div class="form-group">
+        <%= f.label :rate %>
+        <%= f.number_field :rate, min: 1, max: 5, step: 1, required: true,
+                     class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :comment %>
+      <%= f.text_area :comment, class: 'form-control', required: true %>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= f.submit 'Salvar', class: 'btn btn-success' %>
+  </div>
+<% end %>

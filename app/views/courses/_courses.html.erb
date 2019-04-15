@@ -17,24 +17,8 @@
           </div>
           <div class="card-footer d-flex justify-content-between">
             <%= link_to 'Info', course_path(course), class: 'btn btn-primary' %>
-            <% if user_signed_in? %>
-              <% if current_user.student.has_course?(course) %>
-                <span class="btn btn-warning disabled">Curso Comprado</span>
-              <% else %>
-                <% unless course_teacher?(course) %>
-                  <% unless has_order? && order_has_course?(course) %>
-                    <%= link_to 'Adicionar ao Carrinho', add_course_order_path(course),
-                                class: 'btn btn-success' %>
-                  <% else %>
-                    <span class="btn btn-success disabled">Curso no carrinho!</span>
-                  <% end %>
-                <% end %>
-              <% end %>
-            <% else %>
-              <%= active_link_to 'Entre para comprar!',
-                                 new_user_session_path,
-                                 class: 'btn btn-outline-success' %>
-            <% end %>
+
+            <%= render partial: 'courses/buttons', locals: { course: course } %>
           </div>
         </div>
       </div>

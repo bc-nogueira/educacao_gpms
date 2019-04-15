@@ -16,4 +16,8 @@ class Student < ApplicationRecord
   def has_course?(course)
     self.courses.include? course
   end
+
+  def rated_course?(course)
+    self.course_ratings.by_course(course.id).exists?
+  end
 end

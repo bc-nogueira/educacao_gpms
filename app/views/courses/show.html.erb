@@ -20,4 +20,18 @@
 </div>
 
 <h4><%= number_to_currency @course.price %></h4>
-<a href="#" class="btn btn-success">Comprar</a>
+
+<%= render partial: 'courses/buttons', locals: { course: @course } %>
+
+<h3 class="mt-3">Avaliações</h3>
+
+<% if @course.course_ratings.exists? %>
+  <% @course.course_ratings.each do |rating| %>
+    <%= rating.student.user.name %><br />
+    <%= rating.rate %><br />
+    <%= rating.comment %>
+    <hr />
+  <% end %>
+<% else %>
+  <div class="alert alert-warning">O curso ainda não tem avaliações.</div>
+<% end %>

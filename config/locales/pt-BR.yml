@@ -19,6 +19,9 @@ pt-BR:
         name: 'Nome'
         price: 'Preço'
         syllabus: 'Ementa'
+      course_rating:
+        comment: 'Comentário'
+        rate: 'Nota'
       teacher:
         phone_number: 'Telefone'
   date:
