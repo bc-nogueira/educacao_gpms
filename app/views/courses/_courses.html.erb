@@ -14,7 +14,11 @@
               <% end %>
             </h6>
             <p class="card-text"><%= course.description %></p>
-            <p>Average rate: <%= course.average_rate %></p>
+            <% if course.average_rate == -1 %>
+              <div class="alert alert-warning">Curso sem avaliação!</div>
+            <% else %>
+              <div class="course-average-rate" data-rate="<%= course.average_rate %>"></div>
+            <% end %>
           </div>
           <div class="card-footer d-flex justify-content-between">
             <%= link_to 'Info', course_path(course), class: 'btn btn-primary' %>

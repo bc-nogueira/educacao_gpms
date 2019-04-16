@@ -1,9 +1,9 @@
-$( document ).on('turbolinks:load', function() {
-    $("#teste").rateYo({
+$( document ).on("turbolinks:load", function() {
+    $("#course-rate-div").rateYo({
         fullStar: true
     });
 
-    $('#test-form').on('submit', function() {
-        $('#teste-input').val($('#teste').rateYo('rating'));
+    $('#course-rating-form').on("submit", function() {
+        $("#course-rate-input").val($("#course-rate-div").rateYo("rating"));
     })
 });

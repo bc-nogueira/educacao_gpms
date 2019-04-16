@@ -5,6 +5,8 @@
   <% end %>
 </h3>
 
+<hr />
+
 <div class="card mb-3">
   <div class="card-header">
     <h5 class="mb-0">Descrição</h5>
@@ -23,9 +25,13 @@
   </div>
 </div>
 
+<hr />
+
 <h4><%= number_to_currency @course.price %></h4>
 
 <%= render partial: 'courses/buttons', locals: { course: @course } %>
+
+<hr />
 
 <h3 class="mt-3">Avaliações</h3>
 

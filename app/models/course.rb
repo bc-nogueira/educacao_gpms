@@ -13,7 +13,7 @@ class Course < ApplicationRecord
   end
 
   def average_rate
-    return 0 if course_ratings.empty?
+    return -1 if course_ratings.empty?
     course_ratings.sum(&:rate) / course_ratings.size
   end
 end

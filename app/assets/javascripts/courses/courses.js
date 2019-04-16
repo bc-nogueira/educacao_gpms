@@ -1,5 +1,5 @@
 $( document ).on('turbolinks:load', function() {
-    $(".course-rate-show").each( function() {
+    $(".course-average-rate").each( function() {
         $(this).rateYo({
             rating: $(this).attr("data-rate"),
             fullStar: true,
