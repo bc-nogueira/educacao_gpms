@@ -6,15 +6,19 @@
 </h3>
 
 <div class="card mb-3">
+  <div class="card-header">
+    <h5 class="mb-0">Descrição</h5>
+  </div>
   <div class="card-body">
-    <h5 class="card-title">Descrição</h5>
     <p class="card-text"><%= @course.description %></p>
   </div>
 </div>
 
 <div class="card mb-3">
+  <div class="card-header">
+    <h5 class="mn-0">Ementa</h5>
+  </div>
   <div class="card-body">
-    <h5 class="card-title">Ementa</h5>
     <p class="card-text"><%= @course.syllabus %></p>
   </div>
 </div>
@@ -26,12 +30,8 @@
 <h3 class="mt-3">Avaliações</h3>
 
 <% if @course.course_ratings.exists? %>
-  <% @course.course_ratings.each do |rating| %>
-    <%= rating.student.user.name %><br />
-    <div class="courseRate" data-rate="<%= rating.rate %>"></div>
-    <%= rating.comment %>
-    <hr />
-  <% end %>
+  <%= render partial: 'course_ratings/ratings',
+             locals: { rates: @course.course_ratings } %>
 <% else %>
   <div class="alert alert-warning">O curso ainda não tem avaliações.</div>
 <% end %>
