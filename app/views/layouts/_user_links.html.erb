@@ -1,10 +1,10 @@
 <% if has_order? %>
   <%= active_link_to 'Carrinho', order_path(current_order.id),
-                     class: 'btn btn-outline-secondary mr-2' %>
+                     class: 'btn btn-outline-light mr-2' %>
 <% end %>
 
 <div class="dropdown">
-  <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Bem-vindo &nbsp<span class="font-weight-bold"><%= current_user.name %></span>!
   </a>
 

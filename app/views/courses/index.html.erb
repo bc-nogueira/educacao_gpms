@@ -1,7 +1,7 @@
-<h1>Cursos</h1>
-
 <%= render 'courses/search_form' %>
 
+<h1>Cursos</h1>
+<hr />
 <% if user_signed_in? && current_user.teacher? %>
   <%= link_to 'Minhas Turmas', teacher_courses_courses_path, class: 'btn btn-primary mb-4' %>
 <% end %>

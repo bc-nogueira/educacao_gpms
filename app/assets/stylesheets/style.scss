@@ -1,0 +1,28 @@
+* {
+  font-family: Ubuntu, sans-serif;
+}
+
+html, body {
+  height: 100%!important;
+}
+
+body {
+  background-color: #c4e1ff;
+}
+
+.content {
+  min-height: 100%;
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+  height: 60px;
+  line-height: 60px;
+}

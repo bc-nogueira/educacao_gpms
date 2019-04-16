@@ -9,4 +9,9 @@ class Course < ApplicationRecord
   has_and_belongs_to_many :students
 
   scope :by_name_like, ->(name) { where('name LIKE ?', "%#{name}%") }
+
+  def average_rate
+    return 0 if course_ratings.empty?
+    course_ratings.sum(&:rate) / course_ratings.size
+  end
 end

@@ -1,19 +1,20 @@
 <div class="row">
   <% courses.each do |course| %>
     <div class="col-12 col-sm-6 col-xl-4 mb-4">
-      <div class="card w-75 mx-auto">
+      <div class="card">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-title"><%= course.name %></h5>
+            <h5 class="card-title mb-0"><%= course.name %></h5>
+          </div>
+          <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">
               por
               <%= link_to teacher_path(course.teacher) do %>
                 <%= course.teacher.user.name %>
               <% end %>
             </h6>
-          </div>
-          <div class="card-body">
             <p class="card-text"><%= course.description %></p>
+            <p>Average rate: <%= course.average_rate %></p>
           </div>
           <div class="card-footer d-flex justify-content-between">
             <%= link_to 'Info', course_path(course), class: 'btn btn-primary' %>

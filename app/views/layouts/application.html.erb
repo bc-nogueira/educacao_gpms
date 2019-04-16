@@ -4,16 +4,26 @@
     <title>EducacaoGpms</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
-    <div class="container-fluid">
-      <%= render 'layouts/messages' %>
-      <%= yield %>
+    <header>
+      <%= render 'layouts/navbar' %>
+    </header>
+    <div class="content">
+      <main role="main" class="container bg-white p-3">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </main>
+      <footer class="footer bg-primary text-white">
+        <div class="container">
+          Colocar conteúdo aqui.
+        </div>
+      </footer>
     </div>
   </body>
 </html>
