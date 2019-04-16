@@ -22,5 +22,6 @@ Rails.application.routes.draw do
       get 'pay'
     end
   end
+  resources :students, only: :show
   resources :teachers, only: [:index, :show, :new, :create]
 end
