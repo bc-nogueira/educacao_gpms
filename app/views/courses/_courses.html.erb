@@ -5,6 +5,7 @@
         <div class="card">
           <div class="card-header">
             <h5 class="card-title mb-0"><%= course.name %></h5>
+            <span class="text-muted"><%= course.students.size %> aluno(s)</span>
           </div>
           <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">
@@ -17,7 +18,8 @@
             <% if course.average_rate == -1 %>
               <div class="alert alert-warning">Curso sem avaliação!</div>
             <% else %>
-              <div class="course-average-rate" data-rate="<%= course.average_rate %>"></div>
+              <div class="course-average-rate mb-1" data-rate="<%= course.average_rate %>"></div>
+              <span class="text-muted">(<%= course.course_ratings.size %> avaliações)</span>
             <% end %>
           </div>
           <div class="card-footer d-flex justify-content-between">
