@@ -28,7 +28,7 @@
 <% if @course.course_ratings.exists? %>
   <% @course.course_ratings.each do |rating| %>
     <%= rating.student.user.name %><br />
-    <%= rating.rate %><br />
+    <div class="courseRate" data-rate="<%= rating.rate %>"></div>
     <%= rating.comment %>
     <hr />
   <% end %>

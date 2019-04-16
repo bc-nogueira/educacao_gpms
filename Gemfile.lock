@@ -164,6 +164,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rake (12.3.2)
+    rateyo-rails (2.1.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -252,6 +253,7 @@ DEPENDENCIES
   pry (~> 0.12.2)
   puma (~> 3.11)
   rails (~> 5.2.3)
+  rateyo-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

@@ -1,0 +1,9 @@
+$( document ).on('turbolinks:load', function() {
+    $("#teste").rateYo({
+        fullStar: true
+    });
+
+    $('#test-form').on('submit', function() {
+        $('#teste-input').val($('#teste').rateYo('rating'));
+    })
+});
