@@ -1,25 +1,23 @@
 <div class="row">
   <% rates.each do |rate| %>
     <div class="col-12 col-sm-6 col-xl-4 mb-4">
-      <div class="card">
-        <div class="card">
-          <div class="card-body">
-            <div class="course-rate-show mb-3" data-rate="<%= rate.rate %>"></div>
-            <p><%= rate.comment %></p>
-            <span class="text-muted">
+      <div class="card" style="height: 220px">
+        <div class="card-body">
+          <div class="course-rate-show mb-3" data-rate="<%= rate.rate %>"></div>
+          <p class="text-truncate"><%= rate.comment %></p>
+          <span class="text-muted">
               por
-              <%= link_to rate.student.user.name, student_path(rate.student.id) %>
+            <%= link_to rate.student.user.name, student_path(rate.student.id) %>
             </span>
-          </div>
-          <% if rate.student == current_user.student %>
-            <div class="card-footer d-flex justify-content-between">
-              <%= link_to 'Editar', edit_course_rating_path(rate), class: 'btn btn-primary' %>
-
-              <%= link_to 'Excluir', course_rating_path(rate), class: 'btn btn-danger',
-                          method: :delete, data: { confirm: 'Tem certeza?' } %>
-            </div>
-          <% end %>
         </div>
+        <% if rate.student == current_user.student %>
+          <div class="card-footer d-flex justify-content-between">
+            <%= link_to 'Editar', edit_course_rating_path(rate), class: 'btn btn-primary' %>
+
+            <%= link_to 'Excluir', course_rating_path(rate), class: 'btn btn-danger',
+                        method: :delete, data: { confirm: 'Tem certeza?' } %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>

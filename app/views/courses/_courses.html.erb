@@ -1,32 +1,30 @@
 <div class="row">
   <% courses.each do |course| %>
     <div class="col-12 col-sm-6 col-xl-4 mb-4">
-      <div class="card">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title mb-0"><%= course.name %></h5>
-            <span class="text-muted"><%= course.students.size %> aluno(s)</span>
-          </div>
-          <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">
-              por
-              <%= link_to teacher_path(course.teacher) do %>
-                <%= course.teacher.user.name %>
-              <% end %>
-            </h6>
-            <p class="card-text"><%= course.description %></p>
-            <% if course.average_rate == -1 %>
-              <div class="alert alert-warning">Curso sem avaliação!</div>
-            <% else %>
-              <div class="course-average-rate mb-1" data-rate="<%= course.average_rate %>"></div>
-              <span class="text-muted">(<%= course.course_ratings.size %> avaliações)</span>
+      <div class="card" style="height: 310px;">
+        <div class="card-header">
+          <h5 class="card-title mb-0"><%= course.name %></h5>
+          <span class="text-muted"><%= course.students.size %> aluno(s)</span>
+        </div>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">
+            por
+            <%= link_to teacher_path(course.teacher) do %>
+              <%= course.teacher.user.name %>
             <% end %>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <%= link_to 'Info', course_path(course), class: 'btn btn-primary' %>
+          </h6>
+          <p class="card-text text-truncate"><%= course.description %></p>
+          <% if course.average_rate == -1 %>
+            <div class="alert alert-warning">Curso sem avaliação!</div>
+          <% else %>
+            <div class="course-average-rate mb-1" data-rate="<%= course.average_rate %>"></div>
+            <span class="text-muted">(<%= course.course_ratings.size %> avaliações)</span>
+          <% end %>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <%= link_to 'Info', course_path(course), class: 'btn btn-primary' %>
 
-            <%= render partial: 'courses/buttons', locals: { course: course } %>
-          </div>
+          <%= render partial: 'courses/buttons', locals: { course: course } %>
         </div>
       </div>
     </div>
