@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get 'teacher_courses'
     end
   end
-  resources :course_ratings, only: [:new, :create]
+  resources :course_ratings, only: [:new, :create, :edit, :update, :destroy]
   resources :home, only: :index
   resources :orders, only: [:show] do
     collection do

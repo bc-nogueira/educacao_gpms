@@ -1,5 +1,9 @@
 $( document ).on("turbolinks:load", function() {
+    if($('#course-rate-input').val() == "")
+        $('#course-rate-input').val(0);
+
     $("#course-rate-div").rateYo({
+        rating: $('#course-rate-input').val(),
         fullStar: true
     });
 

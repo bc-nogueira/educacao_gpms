@@ -11,6 +11,14 @@
               <%= link_to rate.student.user.name, student_path(rate.student.id) %>
             </span>
           </div>
+          <% if rate.student == current_user.student %>
+            <div class="card-footer d-flex justify-content-between">
+              <%= link_to 'Editar', edit_course_rating_path(rate), class: 'btn btn-primary' %>
+
+              <%= link_to 'Excluir', course_rating_path(rate), class: 'btn btn-danger',
+                          method: :delete, data: { confirm: 'Tem certeza?' } %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
