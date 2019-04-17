@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <% if current_user.student.has_course?(course) %>
+    <% if current_user.student.rated_course?(course) %>
+      <span class="btn btn-warning">Comprado e avaliado</span>
+    <% else %>
+      <%= link_to 'Avaliar', new_course_rating_path(course_id: course.id), class: 'btn btn-primary' %>
+    <% end %>
+  <% else %>
+    <% unless course_teacher?(course) %>
+      <% unless has_order? && order_has_course?(course) %>
+        <%= link_to 'Adicionar ao Carrinho', add_course_order_path(course),
+                    class: 'btn btn-success' %>
+
+        <% unless course.in_wishlist?(current_user.student)  %>
+          <%= render partial: 'wishes/add_btn', locals: { course: course } %>
+        <% end %>
+
+      <% else %>
+        <span class="btn btn-success disabled">Curso no carrinho!</span>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= active_link_to 'Entre para comprar!',
+                     new_user_session_path,
+                     class: 'btn btn-outline-success' %>
+<% end %>

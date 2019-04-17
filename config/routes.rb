@@ -25,4 +25,7 @@ Rails.application.routes.draw do
   resources :students, only: :show
   resources :teachers, only: [:index, :show, :new, :create]
   resources :teacher_ratings, only: [:new, :create, :edit, :update, :destroy]
+  resources :wishes, only: [:index, :create, :destroy] do
+    collection { delete 'destroy_all' }
+  end
 end

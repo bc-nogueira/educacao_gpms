@@ -5,6 +5,7 @@ class Student < ApplicationRecord
   has_many :orders
   has_many :purchases
   has_many :teacher_ratings
+  has_many :wishes
 
   has_and_belongs_to_many :courses
 
