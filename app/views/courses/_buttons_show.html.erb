@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <% if current_user.student.has_course?(course) %>
     <% if current_user.student.rated_course?(course) %>
-      <span class="btn btn-warning">Comprado e avaliado</span>
+      <span class="btn btn-warning disabled">Comprado e avaliado</span>
     <% else %>
       <%= link_to 'Avaliar', new_course_rating_path(course_id: course.id), class: 'btn btn-primary' %>
     <% end %>
@@ -18,6 +18,8 @@
       <% else %>
         <span class="btn btn-success disabled">Curso no carrinho!</span>
       <% end %>
+    <% else %>
+      <span class="btn btn-primary disabled">Você é professor!</span>
     <% end %>
   <% end %>
 <% else %>
