@@ -1,0 +1,19 @@
+<%= form_with model: @teacher_rating, local: true, id: 'teacher-rating-form' do |f| %>
+  <%= f.hidden_field :teacher_id, value: @teacher_rating.teacher.id %>
+  <%= f.hidden_field :student_id, value: current_user.student.id %>
+
+  <div class="card-body">
+    <div class="form-group">
+      <%= f.label :rate %>
+      <div id="teacher-rate-div"></div>
+      <%= f.hidden_field :rate, id: 'teacher-rate-input' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :comment %>
+      <%= f.text_area :comment, class: 'form-control', required: true %>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= f.submit 'Salvar', class: 'btn btn-success' %>
+  </div>
+<% end %>

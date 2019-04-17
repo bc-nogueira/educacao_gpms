@@ -20,4 +20,8 @@ class Student < ApplicationRecord
   def rated_course?(course)
     self.course_ratings.by_course(course.id).exists?
   end
+
+  def rated_teacher?(teacher)
+    self.teacher_ratings.by_teacher(teacher.id).exists?
+  end
 end

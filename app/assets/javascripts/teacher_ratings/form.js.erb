@@ -1,0 +1,13 @@
+$( document ).on("turbolinks:load", function() {
+    if($('#teacher-rate-input').val() == "")
+        $('#teacher-rate-input').val(0);
+
+    $("#teacher-rate-div").rateYo({
+        rating: $('#teacher-rate-input').val(),
+        fullStar: true
+    });
+
+    $('#teacher-rating-form').on("submit", function() {
+        $("#teacher-rate-input").val($("#teacher-rate-div").rateYo("rating"));
+    })
+});

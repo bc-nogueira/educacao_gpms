@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   end
   resources :students, only: :show
   resources :teachers, only: [:index, :show, :new, :create]
+  resources :teacher_ratings, only: [:new, :create, :edit, :update, :destroy]
 end

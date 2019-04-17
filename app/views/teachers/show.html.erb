@@ -11,9 +11,27 @@
     <h4><%= @teacher.user.cpf %></h4>
     <h4><%= @teacher.phone_number %></h4>
     <h4><%= @teacher.courses.size %> curso(s)</h4>
+    <% if user_signed_in? &&
+        @teacher.teaches?(current_user.student) &&
+        !current_user.student.rated_teacher?(@teacher) %>
+      <%= link_to 'Avaliar', new_teacher_rating_path(teacher_id: @teacher.id),
+                  class: 'btn btn-primary' %>
+    <% end %>
     <button class="btn btn-success">Seguir</button>
   </div>
 </div>
 
-<h2>Turmas</h2>
+<hr />
+
+<h2 class="mb-3">Turmas</h2>
 <%= render partial: 'courses/courses', locals: { courses: @teacher.courses } %>
+
+<hr />
+
+<h3 class="mb-3">Avaliações</h3>
+<% if @teacher.teacher_ratings.exists? %>
+  <%= render partial: 'teacher_ratings/ratings',
+             locals: { rates: @teacher.teacher_ratings } %>
+<% else %>
+  <div class="alert alert-warning">Professor(a) ainda não tem avaliações.</div>
+<% end %>
