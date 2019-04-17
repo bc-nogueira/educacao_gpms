@@ -1,9 +1,18 @@
-<h1><%= @course.name %></h1>
-<h3>
-  por <%= link_to @course.teacher.user.name, teacher_path(@course.teacher) %>
-</h3>
+<div class="d-flex flex-wrap justify-content-between">
+  <div>
+    <h1><%= @course.name %></h1>
+    <h3>
+      por <%= link_to @course.teacher.user.name, teacher_path(@course.teacher) %>
+    </h3>
 
-<h6 class="text-muted"><%= @course.students.size %> aluno(s)</h6>
+    <h6 class="text-muted"><%= @course.students.size %> aluno(s)</h6>
+  </div>
+
+  <div>
+    <h3><%= number_to_currency @course.price %></h3>
+    <%= render partial: 'courses/buttons_show', locals: { course: @course } %>
+  </div>
+</div>
 
 <hr />
 
@@ -24,11 +33,6 @@
     <p class="card-text"><%= @course.syllabus %></p>
   </div>
 </div>
-
-<hr />
-
-<h4><%= number_to_currency @course.price %></h4>
-<%= render partial: 'courses/buttons_show', locals: { course: @course } %>
 
 <hr />
 
