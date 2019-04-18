@@ -9,7 +9,7 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item disabled" href="#">Atualizar dados</a>
+    <a href="#" class="dropdown-item disabled">Perfil Aluno</a>
 
     <% if current_user.student.courses.exists? %>
       <%= link_to 'Meus cursos', student_courses_courses_path, class: 'dropdown-item' %>
@@ -30,9 +30,8 @@
       <div class="dropdown-divider"></div>
     <% end %>
 
-
-
     <% if current_user.teacher? %>
+      <%= link_to 'Perfil professor', teacher_path(current_user.teacher), class: 'dropdown-item' %>
       <%= link_to 'Novo curso', new_course_path, class: 'dropdown-item' %>
       <%= link_to 'Minhas Turmas', teacher_courses_courses_path, class: 'dropdown-item' %>
       <div class="dropdown-divider"></div>

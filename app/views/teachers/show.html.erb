@@ -1,4 +1,10 @@
-<h1>Professor</h1>
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Professor</h1>
+  <% if user_signed_in? && current_user.teacher == @teacher %>
+    <a href="#" class="btn btn-success">Editar perfil</a>
+  <% end %>
+</div>
+
 <hr />
 <div class="row my-4">
   <div class="col-5 text-center">
@@ -18,7 +24,7 @@
                     class: 'btn btn-primary' %>
       <% end %>
 
-      <% unless current_user == @teacher.user %>
+      <% if user_signed_in? && current_user != @teacher.user %>
         <% if current_user.student.following?(@teacher) %>
           <%= link_to 'Deixar de seguir', unfollow_teacher_student_path(teacher_id: @teacher.id),
                       class: 'btn btn-danger' %>
@@ -44,4 +50,16 @@
              locals: { rates: @teacher.teacher_ratings } %>
 <% else %>
   <div class="alert alert-warning">Professor(a) ainda não tem avaliações.</div>
+<% end %>
+
+<% if user_signed_in? && current_user.teacher == @teacher && @teacher.followers_count > 0 %>
+  <hr />
+  <h3 class="mb-3">Seguidores</h3>
+  <ul>
+    <% @teacher.followers.each do |student| %>
+      <li><%= link_to student.user.name, student_path(student) %></li>
+    <% end %>
+  </ul>
+
+
 <% end %>
