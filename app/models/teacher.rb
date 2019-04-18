@@ -1,4 +1,6 @@
 class Teacher < ApplicationRecord
+  acts_as_followable
+
   belongs_to :user
 
   has_many :courses

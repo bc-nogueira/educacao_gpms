@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
           <h6 class="card-subtitle"><%= teacher.courses.count %> curso(s)</h6>
-          <p class="card-text"><%= teacher.user.email %></p>
+          <p class="card-text"><%= teacher.followers_count %> seguidor(es)</p>
         </div>
         <div class="card-footer d-flex justify-content-between">
           <%= link_to 'Perfil', teacher_path(teacher), class: 'btn btn-primary' %>

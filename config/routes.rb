@@ -23,7 +23,12 @@ Rails.application.routes.draw do
       get 'pay'
     end
   end
-  resources :students, only: :show
+  resources :students, only: :show do
+    member do
+      get 'follow_teacher'
+      get 'unfollow_teacher'
+    end
+  end
   resources :teachers, only: [:index, :show, :new, :create]
   resources :teacher_ratings, only: [:new, :create, :edit, :update, :destroy]
   resources :wishes, only: [:index, :create, :destroy] do

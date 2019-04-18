@@ -1,4 +1,6 @@
 class Student < ApplicationRecord
+  acts_as_follower
+
   belongs_to :user, dependent: :destroy
 
   has_many :course_ratings

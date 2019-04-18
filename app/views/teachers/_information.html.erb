@@ -1,0 +1,19 @@
+<div class="row" style="font-size: 1.4rem">
+  <div class="col-3 font-weight-bold">E-mail</div>
+  <div class="col-9"><%= @teacher.user.email %></div>
+</div>
+
+<div class="row" style="font-size: 1.4rem">
+  <div class="col-3 font-weight-bold">Telefone</div>
+  <div class="col-9"><%= @teacher.phone_number %></div>
+</div>
+
+<div class="row" style="font-size: 1.4rem">
+  <div class="col-3 font-weight-bold">Cursos</div>
+  <div class="col-9"><%= @teacher.courses.size %></div>
+</div>
+
+<div class="row" style="font-size: 1.4rem">
+  <div class="col-3 font-weight-bold">Seguidores</div>
+  <div class="col-9"><%= @teacher.followers_count %></div>
+</div>
