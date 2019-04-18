@@ -1,10 +1,6 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :destroy]
 
-  def index
-    @lessons = Lesson.by_course(params[:course_id]).order_by_position
-  end
-
   def show; end
 
   def new
@@ -15,7 +11,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lessons_params)
     if @lesson.save
       flash[:notice] = 'Aula criada com sucesso!'
-      redirect_to lessons_path(course_id: @lesson.course.id)
+      redirect_to course_path @lesson.course.id
     end
   end
 
@@ -25,15 +21,15 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     if @lesson.update(lessons_params)
       flash[:notice] = 'Aula atualizada com sucesso!'
-      redirect_to lessons_path(course_id: @lesson.course.id)
+      redirect_to course_path @lesson.course.id
     end
   end
 
   def destroy
-    course_id = @lesson.course.id
+    course = @lesson.course
     @lesson.destroy
     flash[:notice] = 'Aula removida com sucesso!'
-    redirect_to lessons_path(course_id: course_id)
+    redirect_to course_path course
   end
 
   private

@@ -3,6 +3,7 @@ class Course < ApplicationRecord
 
   has_many :course_ratings
   has_many :course_orders
+  has_many :lessons
   has_many :orders, through: :course_orders
   has_many :wishes
 
