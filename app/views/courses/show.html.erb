@@ -6,6 +6,8 @@
     </h3>
 
     <h6 class="text-muted"><%= @course.students.size %> aluno(s)</h6>
+
+    <%= link_to 'Listar aulas', lessons_path(course_id: @course.id) %>
   </div>
 
   <div>

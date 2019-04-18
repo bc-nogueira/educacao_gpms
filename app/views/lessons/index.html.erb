@@ -9,6 +9,7 @@
           <h5><%= lesson.title %></h5>
           <div>
             <%= link_to 'Assistir aula', lesson_path(lesson), class: 'btn btn-primary' %>
+            <%= link_to 'Editar', edit_lesson_path(lesson), class: 'btn btn-primary' %>
             <%= link_to 'Excluir', lesson_path(lesson), method: :delete,
                         data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
           </div>

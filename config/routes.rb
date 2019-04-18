@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :course_ratings, only: [:new, :create, :edit, :update, :destroy]
   resources :home, only: :index
+  resources :lessons, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :orders, only: [:show] do
     collection do
       get 'student_orders'
