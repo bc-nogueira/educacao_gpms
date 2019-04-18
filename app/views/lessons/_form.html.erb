@@ -1,0 +1,24 @@
+<%= form_with model: @lesson do |f| %>
+  <%= f.hidden_field :course_id, value: @lesson.course_id %>
+
+  <div class="card-body">
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :position %>
+      <%= f.number_field :position, min: 0, step: 1,
+                         class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= f.submit 'Salvar', class: 'btn btn-success' %>
+  </div>
+<% end %>
