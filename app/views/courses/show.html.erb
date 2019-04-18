@@ -2,7 +2,7 @@
   <div>
     <h1><%= @course.name %></h1>
     <h3>
-      por <%= link_to @course.teacher.user.name, teacher_path(@course.teacher) %>
+      por <%= link_to @course.teacher.name, teacher_path(@course.teacher) %>
     </h3>
 
     <h6 class="text-muted"><%= @course.students.size %> aluno(s)</h6>

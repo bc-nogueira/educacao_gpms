@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  message: MyString
+  situation: 1
+  student: one
+  course: one
+  lesson: one
+
+two:
+  message: MyString
+  situation: 1
+  student: two
+  course: two
+  lesson: two

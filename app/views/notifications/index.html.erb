@@ -1,0 +1,39 @@
+<h1>Notificações</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Mensagem</th>
+    <th scope="col">Em</th>
+    <th scope="col">Curso</th>
+    <th scope="col">Aula</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @notifications.each do |notification| %>
+    <tr>
+      <td>
+        <span class="<%= 'font-weight-bold' unless notification.read %>">
+          <%= notification.message %>
+        </span>
+      </td>
+      <td><%= notification.created_at.strftime('%d/%m/%Y') %></td>
+      <td>
+        <%= link_to 'Ver', notification_path(notification, to_course: true),
+                    method: :put, class: 'btn btn-primary' %>
+      </td>
+      <td>
+        <% if notification.lesson.present? %>
+          <%= link_to 'Ver', notification_path(notification, to_course: false),
+                      method: :put, class: 'btn btn-primary' %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to 'Apagar', notification_path(notification), method: :delete,
+                    data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

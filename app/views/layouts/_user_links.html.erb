@@ -4,13 +4,28 @@
 <% end %>
 
 <div class="dropdown">
-  <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <% if current_user.student.notifications.unread.any? %>
+      <span class="badge badge-danger mr-2">
+        <%= current_user.student.notifications.unread.size %>
+      </span>
+    <% end %>
     Bem-vindo &nbsp<span class="font-weight-bold"><%= current_user.name %></span>!
   </a>
 
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+  <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink">
     <span class="text-muted ml-2" style="font-size: 0.8rem;">ALUNO</span>
     <%= link_to 'Perfil Aluno', student_path(current_user.student), class: 'dropdown-item' %>
+
+    <% if current_user.student.notifications.unread.any? %>
+      <%= link_to notifications_path, class: 'dropdown-item' do %>
+        Notificações
+        <span class="badge badge-danger ml-2">
+          <%= current_user.student.notifications.unread.size %>
+        </span>
+      <% end %>
+      </a>
+    <% end %>
 
     <% if current_user.student.courses.exists? %>
       <%= link_to 'Meus cursos', student_courses_courses_path, class: 'dropdown-item' %>

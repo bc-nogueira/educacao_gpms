@@ -16,7 +16,7 @@
   </div>
 
   <div class="col-7">
-    <h2><%= @student.user.name %></h2>
+    <h2><%= @student.name %></h2>
 
     <%= render 'students/information' %>
   </div>
@@ -38,7 +38,7 @@
   <h3 class="mb-3">Seguindo</h3>
   <ul>
     <% @student.all_following.each do |teacher| %>
-      <li><%= link_to teacher.user.name, teacher_path(teacher) %></li>
+      <li><%= link_to teacher.name, teacher_path(teacher) %></li>
     <% end %>
   </ul>
 

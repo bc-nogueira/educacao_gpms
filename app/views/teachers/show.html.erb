@@ -8,7 +8,7 @@
 <hr />
 <div class="row my-4">
   <div class="col-5 text-center">
-    <% if @teacher.user.gender == :male %>
+    <% if @teacher.gender == 'male' %>
       <%= image_tag 'http://i64.tinypic.com/344qrzd.jpg', class: 'img-fluid' %>
     <% else %>
       <%= image_tag 'http://i64.tinypic.com/2im57q9.png', class: 'img-fluid' %>
@@ -16,7 +16,7 @@
   </div>
 
   <div class="col-7">
-    <h2><%= @teacher.user.name %></h2>
+    <h2><%= @teacher.name %></h2>
 
     <%= render 'teachers/information' %>
 
@@ -61,7 +61,7 @@
   <h3 class="mb-3">Seguidores</h3>
   <ul>
     <% @teacher.followers.each do |student| %>
-      <li><%= link_to student.user.name, student_path(student) %></li>
+      <li><%= link_to student.name, student_path(student) %></li>
     <% end %>
   </ul>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_200331) do
+ActiveRecord::Schema.define(version: 2019_04_18_215053) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +91,19 @@ ActiveRecord::Schema.define(version: 2019_04_18_200331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_lessons_on_course_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "message"
+    t.boolean "read", default: false
+    t.integer "student_id"
+    t.integer "course_id"
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_notifications_on_course_id"
+    t.index ["lesson_id"], name: "index_notifications_on_lesson_id"
+    t.index ["student_id"], name: "index_notifications_on_student_id"
   end
 
   create_table "orders", force: :cascade do |t|

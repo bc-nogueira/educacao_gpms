@@ -13,10 +13,15 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lessons_params)
-    if @lesson.save
+    @lesson.transaction do
+      @lesson.save
+      Notification.create_for_lesson(@lesson)
       flash[:notice] = 'Aula criada com sucesso!'
       redirect_to course_path @lesson.course.id
     end
+  rescue ActiveRecord::RecordInvalid => errors
+    flash.now[:error] = 'Erro ao criar aula.'
+    render :new
   end
 
   def edit; end

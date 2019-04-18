@@ -25,13 +25,15 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    if @course.save
+    @course.transaction do
+      @course.save
+      Notification.create_for_course(@course)
       flash[:notice] = 'Curso criado com sucesso!'
       redirect_to courses_path
-    else
-      flash.now[:error] = 'Erro ao criar curso.'
-      render :new
     end
+  rescue ActiveRecord::RecordInvalid => errors
+    flash.now[:error] = 'Erro ao criar curso.'
+    render :new
   end
 
   private

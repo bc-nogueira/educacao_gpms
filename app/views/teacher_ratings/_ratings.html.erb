@@ -7,7 +7,7 @@
           <p class="text-truncate"><%= rate.comment %></p>
           <span class="text-muted">
               por
-            <%= link_to rate.student.user.name, student_path(rate.student.id) %>
+            <%= link_to rate.student.name, student_path(rate.student.id) %>
             </span>
         </div>
         <% if user_signed_in? && rate.student == current_user.student %>
