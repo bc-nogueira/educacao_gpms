@@ -8,7 +8,11 @@
 <hr />
 <div class="row my-4">
   <div class="col-5 text-center">
-    <%= image_tag 'http://i64.tinypic.com/344qrzd.jpg', class: 'img-fluid' %>
+    <% if @teacher.user.gender == :male %>
+      <%= image_tag 'http://i64.tinypic.com/344qrzd.jpg', class: 'img-fluid' %>
+    <% else %>
+      <%= image_tag 'http://i64.tinypic.com/2im57q9.png', class: 'img-fluid' %>
+    <% end %>
   </div>
 
   <div class="col-7">

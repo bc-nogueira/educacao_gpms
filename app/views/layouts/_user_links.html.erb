@@ -9,7 +9,7 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="#" class="dropdown-item disabled">Perfil Aluno</a>
+    <%= link_to 'Perfil Aluno', student_path(current_user.student), class: 'dropdown-item' %>
 
     <% if current_user.student.courses.exists? %>
       <%= link_to 'Meus cursos', student_courses_courses_path, class: 'dropdown-item' %>
@@ -31,7 +31,7 @@
     <% end %>
 
     <% if current_user.teacher? %>
-      <%= link_to 'Perfil professor', teacher_path(current_user.teacher), class: 'dropdown-item' %>
+      <%= link_to 'Perfil Professor', teacher_path(current_user.teacher), class: 'dropdown-item' %>
       <%= link_to 'Novo curso', new_course_path, class: 'dropdown-item' %>
       <%= link_to 'Minhas Turmas', teacher_courses_courses_path, class: 'dropdown-item' %>
       <div class="dropdown-divider"></div>
