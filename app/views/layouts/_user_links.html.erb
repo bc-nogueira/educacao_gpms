@@ -9,6 +9,7 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <span class="text-muted ml-2" style="font-size: 0.8rem;">ALUNO</span>
     <%= link_to 'Perfil Aluno', student_path(current_user.student), class: 'dropdown-item' %>
 
     <% if current_user.student.courses.exists? %>
@@ -25,12 +26,14 @@
 
     <div class="dropdown-divider"></div>
     <% unless current_user.teacher? %>
+      <span class="text-muted ml-2" style="font-size: 0.8rem;">PROFESSOR</span>
       <%= link_to 'Quero ser professor', new_teacher_path,
                   class: 'dropdown-item' %>
       <div class="dropdown-divider"></div>
     <% end %>
 
     <% if current_user.teacher? %>
+      <span class="text-muted ml-2" style="font-size: 0.8rem;">PROFESSOR</span>
       <%= link_to 'Perfil Professor', teacher_path(current_user.teacher), class: 'dropdown-item' %>
       <%= link_to 'Novo curso', new_course_path, class: 'dropdown-item' %>
       <%= link_to 'Minhas Turmas', teacher_courses_courses_path, class: 'dropdown-item' %>
