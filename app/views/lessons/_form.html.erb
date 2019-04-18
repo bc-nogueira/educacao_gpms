@@ -2,15 +2,22 @@
   <%= f.hidden_field :course_id, value: @lesson.course_id %>
 
   <div class="card-body">
-    <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
+
+    <div class="form-group row">
+      <div class="col-sm-6 col-12">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="col-sm-6 col-12">
+        <%= f.label :position %>
+        <%= f.number_field :position, min: 0, step: 1,
+                           class: 'form-control' %>
+      </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :position %>
-      <%= f.number_field :position, min: 0, step: 1,
-                         class: 'form-control' %>
+      <%= f.label :video_url %>
+      <%= f.text_field :video_url, class: 'form-control' %>
     </div>
 
     <div class="form-group">

@@ -1,7 +1,11 @@
+require 'video_info'
+
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :destroy]
 
-  def show; end
+  def show
+    @playlist = VideoInfo.new(@lesson.video_url)
+  end
 
   def new
     @lesson = Lesson.new(course_id: params[:course_id])
@@ -35,7 +39,8 @@ class LessonsController < ApplicationController
   private
 
   def lessons_params
-    params.require(:lesson).permit(:course_id, :title, :description, :position)
+    params.require(:lesson)
+        .permit(:course_id, :title, :description, :position, :video_url)
   end
 
   def set_lesson

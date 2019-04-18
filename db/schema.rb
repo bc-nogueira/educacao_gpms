@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_225813) do
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.string "video_url"
     t.integer "position"
     t.integer "course_id"
     t.datetime "created_at", null: false

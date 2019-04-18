@@ -46,6 +46,7 @@ gem 'devise', '~> 4.6', '>= 4.6.2'
 gem 'jquery-rails'
 # Rating with stars
 gem 'rateyo-rails'
+gem 'video_info', '~> 2.7'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8'
