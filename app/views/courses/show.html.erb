@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-6">
+  <div class="col-12 col-sm-12 col-lg-6">
     <div class="d-flex flex-column justify-content-between h-100">
       <span class="font-weight-bold" style="font-size: 1.8rem;"><%= @course.name %></span>
       <span class="font-weight-bold" style="font-size: 1.2rem;">
@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div class="col-3 d-flex flex-column justify-content-between">
+  <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
     <%= render partial: 'courses/show_price', locals: { course: @course } %>
     <% if @discount.present? %>
       <div class="alert alert-info mb-0">
@@ -19,7 +19,7 @@
     <% end %>
   </div>
 
-  <div class="col-3 d-flex flex-column justify-content-between">
+  <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
     <%= render partial: 'courses/buttons_show', locals: { course: @course } %>
   </div>
 </div>
