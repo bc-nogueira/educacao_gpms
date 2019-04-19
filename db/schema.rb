@@ -56,12 +56,6 @@ ActiveRecord::Schema.define(version: 2019_04_18_235908) do
     t.index ["teacher_id"], name: "index_courses_on_teacher_id"
   end
 
-  create_table "courses_purchases", id: false, force: :cascade do |t|
-    t.integer "course_id", null: false
-    t.integer "purchase_id", null: false
-    t.index ["course_id", "purchase_id"], name: "index_courses_purchases_on_course_id_and_purchase_id"
-  end
-
   create_table "courses_students", id: false, force: :cascade do |t|
     t.integer "course_id", null: false
     t.integer "student_id", null: false
@@ -121,13 +115,6 @@ ActiveRecord::Schema.define(version: 2019_04_18_235908) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_orders_on_student_id"
-  end
-
-  create_table "purchases", force: :cascade do |t|
-    t.integer "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["student_id"], name: "index_purchases_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|

@@ -13,7 +13,7 @@
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionPay">
       <div class="card-body">
         <%= render partial: 'orders/order', locals: { order: @order } %>
-        <h5>Total: <%= number_to_currency(@order.total_price(@discount.discount)) %></h5>
+        <h5>Total: <%= number_to_currency(@order.total_price(@discount)) %></h5>
       </div>
     </div>
   </div>

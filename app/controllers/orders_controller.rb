@@ -35,6 +35,10 @@ class OrdersController < ApplicationController
   def finalize
     current_user.student.add_courses(@order.courses)
     @order.update(situation: :closed)
+    @order.course_orders.each do |co|
+      disc = Discount.active.first
+      co.update(final_price: co.course.discounted_price(disc.discount))
+    end
     session.delete(:order_id)
     redirect_to root_path
   end

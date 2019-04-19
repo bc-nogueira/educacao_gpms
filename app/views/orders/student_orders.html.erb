@@ -14,8 +14,24 @@
       <div id="collapse<%= order.id %>" class="collapse"
            aria-labelledby="heading<%= order.id %>" data-parent="#accordionStudentOrders">
         <div class="card-body">
-          <%= render partial: 'orders/order', locals: {order: order } %>
-          <h5>Total <%= number_to_currency order.courses.sum(&:price) %></h5>
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th scope="col" class="w-75">Curso</th>
+              <th scope="col" class="w-25">Preço</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% order.course_orders.each do |course_order| %>
+              <tr>
+                <td><%= course_order.course.name %></td>
+                <td><%= number_to_currency course_order.final_price %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+          <h5>Total <%= number_to_currency order.course_orders.sum(&:final_price) %></h5>
           <span>Realizado em <%= order.created_at.strftime("%-d/%m/%Y as %H:%M") %></span>
         </div>
       </div>

@@ -9,6 +9,7 @@ class Order < ApplicationRecord
   enum situation: [:open, :closed]
 
   def total_price(discount)
-    courses.sum { |course| course.discounted_price(discount) }
+    return courses.sum(&:price) if discount.nil?
+    courses.sum { |course| course.discounted_price(discount.discount) }
   end
 end
