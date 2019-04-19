@@ -7,4 +7,8 @@ class Order < ApplicationRecord
   scope :closed, -> { where(situation: :closed) }
 
   enum situation: [:open, :closed]
+
+  def total_price(discount)
+    courses.sum { |course| course.discounted_price(discount) }
+  end
 end

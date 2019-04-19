@@ -8,8 +8,9 @@
     <h6 class="text-muted"><%= @course.students.size %> aluno(s)</h6>
   </div>
 
-  <div>
-    <h3><%= number_to_currency @course.price %></h3>
+  <div class="d-flex flex-column justify-content-around">
+      <%= render partial: 'courses/show_price', locals: { course: @course } %>
+
     <%= render partial: 'courses/buttons_show', locals: { course: @course } %>
   </div>
 </div>

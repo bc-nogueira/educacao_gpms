@@ -24,4 +24,8 @@ class Course < ApplicationRecord
     wishes.each { |wish| return true if wish.student == student }
     false
   end
+
+  def discounted_price(discount)
+    price * (1 - discount/100.0)
+  end
 end

@@ -1,7 +1,7 @@
 <div class="row">
   <% courses.each do |course| %>
     <div class="col-12 col-sm-6 mb-4">
-      <div class="card" style="height: 310px;">
+      <div class="card" style="height: 340px;">
         <div class="card-header">
           <h5 class="card-title mb-0"><%= course.name %></h5>
           <span class="text-muted"><%= course.students.size %> aluno(s)</span>
@@ -20,6 +20,8 @@
             <div class="course-average-rate mb-1" data-rate="<%= course.average_rate %>"></div>
             <span class="text-muted">(<%= course.course_ratings.size %> avaliações)</span>
           <% end %>
+
+          <%= render partial: 'courses/show_price', locals: { course: course } %>
         </div>
         <div class="card-footer d-flex justify-content-between">
           <%= link_to 'Info', course_path(course), class: 'btn btn-primary' %>

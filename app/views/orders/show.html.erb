@@ -13,7 +13,7 @@
     <% @order.courses.each do |course| %>
       <tr>
         <td><%= course.name %></td>
-        <td><%= number_to_currency course.price %></td>
+        <td><%= render partial: 'orders/show_price', locals: { course: course } %></td>
         <td>
           <%= link_to 'Remover', remove_course_order_path(course), method: :delete,
                       data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
@@ -23,7 +23,24 @@
     </tbody>
   </table>
 
-  <%= link_to 'Finalizar Compra', pay_order_path, class: 'btn btn-success' %>
+  <div class="d-flex justify-content-between">
+    <div>
+      <h3>
+        Total: <%= number_to_currency(@order.total_price(@discount.discount)) %>
+      </h3>
+      <%= link_to 'Finalizar Compra', pay_order_path, class: 'btn btn-success' %>
+    </div>
+    <% if @discount.present? %>
+      <div class="card">
+        <div class="card-header">Desconto aplicado</div>
+        <div class="card-body">
+          <h5 class="mb-0">
+            <%= "#{@discount.title}: #{@discount.discount}%" %>
+          </h5>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <div class="alert alert-warning">
     Seu carrinho está vazio!

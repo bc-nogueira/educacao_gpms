@@ -1,0 +1,12 @@
+<% if @discount.present? %>
+  <div class="d-flex align-items-center">
+    <h3 class="mb-0">
+      <%= number_to_currency(course.discounted_price(@discount.discount))  %>
+    </h3>
+    <h4 class="mb-0 ml-3 text-line-through text-muted">
+      <%= number_to_currency course.price %>
+    </h4>
+  </div>
+<% else %>
+  <h3 class="mb-0"><%= number_to_currency course.price %></h3>
+<% end %>

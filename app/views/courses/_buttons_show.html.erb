@@ -9,7 +9,7 @@
     <% unless course_teacher?(course) %>
       <% unless has_order? && order_has_course?(course) %>
         <%= link_to 'Adicionar ao Carrinho', add_course_order_path(course),
-                    class: 'btn btn-success w-100' %>
+                    class: 'btn btn-success' %>
 
         <% unless course.in_wishlist?(current_user.student)  %>
           <%= render partial: 'wishes/add_btn', locals: { course: course } %>

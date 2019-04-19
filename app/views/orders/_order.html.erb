@@ -9,7 +9,7 @@
   <% order.courses.each do |course| %>
     <tr>
       <td><%= course.name %></td>
-      <td><%= number_to_currency course.price %></td>
+      <td><%= render partial: 'orders/show_price', locals: { course: course } %></td>
     </tr>
   <% end %>
   </tbody>
