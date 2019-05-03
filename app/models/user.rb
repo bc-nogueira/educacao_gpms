@@ -9,6 +9,9 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :student
 
+  validates :name, :gender, :birthdate, presence: true
+  validates :cpf, uniqueness: true
+
   enum gender: [:female, :male, :other]
 
   def teacher?
