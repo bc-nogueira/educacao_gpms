@@ -6,6 +6,8 @@ class Teacher < ApplicationRecord
   has_many :courses
   has_many :teacher_ratings
 
+  validates :phone_number, presence: true
+
   def email
     user.email
   end
