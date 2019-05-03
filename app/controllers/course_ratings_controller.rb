@@ -5,11 +5,10 @@ class CourseRatingsController < ApplicationController
   end
 
   def create
-    course_rating = CourseRating.new(course_rating_params)
-    if course_rating.save
-      flash[:notice] = 'Avaliação adicionada com sucesso!'
-      redirect_to course_path course_rating.course
-    end
+    @course_rating = CourseRating.new(course_rating_params)
+    render :new and return unless @course_rating.save
+    flash[:notice] = 'Avaliação adicionada com sucesso!'
+    redirect_to course_path @course_rating.course
   end
 
   def edit

@@ -3,6 +3,18 @@
   <%= f.hidden_field :student_id, value: current_user.student.id %>
 
   <div class="card-body">
+    <% if @course_rating.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <h5>A validação falhou:</h5>
+
+        <ul class="mb-0">
+          <% @course_rating.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div class="form-group">
       <%= f.label :rate %>
       <div id="course-rate-div"></div>
