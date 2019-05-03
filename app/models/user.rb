@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :student
-  has_one :teacher # TODO: Verificar se precisa colocar optional: true
+  has_one :teacher
 
   accepts_nested_attributes_for :student
 
