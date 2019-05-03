@@ -30,10 +30,10 @@
 
       <% if user_signed_in? && current_user != @teacher.user %>
         <% if current_user.student.following?(@teacher) %>
-          <%= link_to 'Deixar de seguir', unfollow_teacher_student_path(teacher_id: @teacher.id),
+          <%= link_to 'Deixar de seguir', unfollow_teacher_path(teacher_id: @teacher.id),
                       class: 'btn btn-danger' %>
         <% else %>
-          <%= link_to 'Seguir', follow_teacher_student_path(teacher_id: @teacher.id),
+          <%= link_to 'Seguir', follow_teacher_path(teacher_id: @teacher.id),
                       class: 'btn btn-success' %>
         <% end %>
       <% end %>

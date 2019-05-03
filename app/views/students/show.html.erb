@@ -24,7 +24,7 @@
 
 <hr />
 
-<h2 class="mb-3">Cursos</h2>
+<h2 class="mb-3">Cursos (inscrito)</h2>
 <% if @student.courses.any? %>
   <%= render partial: 'courses/courses', locals: { courses: @student.courses } %>
 <% else %>
@@ -41,6 +41,4 @@
       <li><%= link_to teacher.name, teacher_path(teacher) %></li>
     <% end %>
   </ul>
-
-
 <% end %>
