@@ -19,7 +19,8 @@
         <span class="btn btn-success disabled">Curso no carrinho!</span>
       <% end %>
     <% else %>
-      <%= link_to 'Criar Aula', new_lesson_path(course_id: course.id), class: 'btn btn-primary' %>
+      <%= link_to 'Editar Curso', edit_course_path(course), class: 'btn btn-primary' %>
+      <%= link_to 'Criar Aula', new_lesson_path(course_id: course.id), class: 'btn btn-success' %>
     <% end %>
   <% end %>
 <% else %>

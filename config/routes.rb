@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'home#index'
 
-  resources :courses, only: [:index, :show, :new, :create] do
+  resources :courses, only: [:index, :show, :new, :create, :edit, :update] do
     collection do
       get 'search'
       get 'student_courses'

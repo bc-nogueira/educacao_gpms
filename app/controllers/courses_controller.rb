@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
+  before_action :find_course, only: [:show, :edit, :update]
+
   def index
     @courses = Course.all
   end
 
-  def show
-    @course = Course.find(params[:id])
-  end
+  def show; end
 
   def search
     @courses = Course.by_name_like(params[:search])
@@ -26,17 +26,29 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.transaction do
-      @course.save
+      @course.save!
       Notification.create_for_course(@course)
       flash[:notice] = 'Curso criado com sucesso!'
       redirect_to courses_path
     end
-  rescue ActiveRecord::RecordInvalid => errors
-    flash.now[:error] = 'Erro ao criar curso.'
+  rescue ActiveRecord::RecordInvalid
     render :new
   end
 
+  def edit; end
+
+  def update
+    @course.update(course_params)
+    render :edit and return unless @course.update(course_params)
+    flash[:notice] = 'Curso atualizado com sucesso!'
+    redirect_to @course
+  end
+
   private
+
+  def find_course
+    @course = Course.find(params[:id])
+  end
 
   def course_params
     params.require(:course)

@@ -11,6 +11,9 @@ class Course < ApplicationRecord
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :students
 
+  validates :name, :price, :description, :syllabus, presence: true
+  validates :name, uniqueness: true
+
   scope :by_name_like, ->(name) do
     where('LOWER(name) LIKE ?', "%#{name.downcase}%")
   end
