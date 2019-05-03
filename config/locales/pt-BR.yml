@@ -24,6 +24,9 @@ pt-BR:
         rate: 'Nota'
       teacher:
         phone_number: 'Telefone'
+      teacher_rating:
+        comment: 'Comentário'
+        rate: 'Nota'
   date:
     abbr_day_names:
       - Dom

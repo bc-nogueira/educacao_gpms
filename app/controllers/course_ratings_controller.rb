@@ -1,4 +1,5 @@
 class CourseRatingsController < ApplicationController
+  before_action :find_course_rating, only: [:edit, :update, :destroy]
   def new
     @course_rating = CourseRating.new
     @course_rating.course = Course.find(params[:course_id])
@@ -11,26 +12,26 @@ class CourseRatingsController < ApplicationController
     redirect_to course_path @course_rating.course
   end
 
-  def edit
-    @course_rating = CourseRating.find(params[:id])
-  end
+  def edit; end
 
   def update
-    course_rating = CourseRating.find(params[:id])
-    course_rating.update(course_rating_params)
+    @course_rating.update(course_rating_params)
     flash[:notice] = 'Avaliação atualizada com sucesso!'
     redirect_to course_path course_rating.course
   end
 
   def destroy
-    course_rating = CourseRating.find(params[:id])
-    course = course_rating.course
-    course_rating.destroy
+    course = @course_rating.course
+    @course_rating.destroy
     flash[:notice] = 'Avaliação excluída com sucesso.'
     redirect_to course_path course
   end
 
   private
+
+  def find_course_rating
+    @course_rating = CourseRating.find(params[:id])
+  end
 
   def course_rating_params
     params.require(:course_rating)
