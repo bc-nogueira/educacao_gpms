@@ -43,6 +43,8 @@ gem 'active_link_to', '~> 1.0', '>= 1.0.5'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 # Authentication
 gem 'devise', '~> 4.6', '>= 4.6.2'
+# jQuery mask
+gem 'jquery_mask_rails', '~> 0.1.0'
 # jQuery for Bootstrap
 gem 'jquery-rails'
 # Rating with stars
