@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: [:update, :destroy]
+  before_action :find_notification, only: [:update, :destroy]
   def index
     @notifications = Notification.by_student(helpers.current_user.student.id)
   end
@@ -18,7 +18,7 @@ class NotificationsController < ApplicationController
 
   private
 
-  def set_notification
+  def find_notification
     @notification = Notification.find(params[:id])
   end
 end

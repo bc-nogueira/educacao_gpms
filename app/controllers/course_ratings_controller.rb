@@ -15,9 +15,9 @@ class CourseRatingsController < ApplicationController
   def edit; end
 
   def update
-    @course_rating.update(course_rating_params)
+    render :edit and return unless @course_rating.update(course_rating_params)
     flash[:notice] = 'Avaliação atualizada com sucesso!'
-    redirect_to course_path course_rating.course
+    redirect_to course_path @course_rating.course
   end
 
   def destroy

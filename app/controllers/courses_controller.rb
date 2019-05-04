@@ -38,7 +38,6 @@ class CoursesController < ApplicationController
   def edit; end
 
   def update
-    @course.update(course_params)
     render :edit and return unless @course.update(course_params)
     flash[:notice] = 'Curso atualizado com sucesso!'
     redirect_to @course
