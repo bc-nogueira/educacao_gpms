@@ -15,10 +15,12 @@
       <%= render 'layouts/navbar' %>
     </header>
     <div class="content">
-      <main role="main" class="container bg-white p-3">
+      <main role="main" class="container bg-white p-0">
         <%= render 'layouts/discount_message' %>
-        <%= render 'layouts/messages' %>
-        <%= yield %>
+        <div class="p-3">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div>
       </main>
       <footer class="footer bg-primary text-white">
         <div class="container">

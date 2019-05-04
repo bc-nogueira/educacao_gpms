@@ -1,13 +1,9 @@
 <% if @discount.present? %>
-  <div class="alert alert-info text-center alert-dismissible fade show"
-       id="discount-alert" role="alert">
+  <div class="text-center py-2" id="discount-alert">
     <h1>
       Aproveite o desconto de <%= @discount.title %>!<br />
       <%= @discount.discount %>% de desconto em todos os cursos!
     </h1>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
 <% end %>
 
