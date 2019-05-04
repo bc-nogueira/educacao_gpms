@@ -1,7 +1,7 @@
 require 'video_info'
 
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: [:show, :edit, :destroy]
+  before_action :find_lesson, only: [:show, :edit, :update, :destroy]
 
   def show
     @playlist = VideoInfo.new(@lesson.video_url)
@@ -14,24 +14,21 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lessons_params)
     @lesson.transaction do
-      @lesson.save
+      @lesson.save!
       Notification.create_for_lesson(@lesson)
       flash[:notice] = 'Aula criada com sucesso!'
       redirect_to course_path @lesson.course.id
     end
-  rescue ActiveRecord::RecordInvalid => errors
-    flash.now[:error] = 'Erro ao criar aula.'
+  rescue ActiveRecord::RecordInvalid
     render :new
   end
 
   def edit; end
 
   def update
-    @lesson = Lesson.find(params[:id])
-    if @lesson.update(lessons_params)
-      flash[:notice] = 'Aula atualizada com sucesso!'
-      redirect_to course_path @lesson.course.id
-    end
+    render :edit and return unless @lesson.update(lessons_params)
+    flash[:notice] = 'Aula atualizada com sucesso!'
+    redirect_to course_path @lesson.course.id
   end
 
   def destroy
@@ -48,7 +45,7 @@ class LessonsController < ApplicationController
         .permit(:course_id, :title, :description, :position, :video_url)
   end
 
-  def set_lesson
+  def find_lesson
     @lesson = Lesson.find(params[:id])
   end
 end
