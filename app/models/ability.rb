@@ -29,6 +29,7 @@ class Ability
     can [:index, :destroy, :destroy_all], Wish, student_id: user.id
     return unless user.teacher?
     # Abilities for teacher
+    can [:new, :create, :edit, :update], Course, teacher_id: user.id
     can :new, Lesson do
       return if params[:course_id].nil?
       user.teacher.teaches_course?(Course.find(params[:course_id]))
