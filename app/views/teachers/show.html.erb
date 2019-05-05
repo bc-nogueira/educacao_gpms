@@ -21,14 +21,12 @@
     <%= render 'teachers/information' %>
 
     <div class="mt-3">
-      <% if user_signed_in? &&
-          @teacher.teaches_student?(current_user.student) &&
-          !current_user.student.rated_teacher?(@teacher) %>
+      <% if can? :new, TeacherRating && !current_user.student.rated_teacher?(@teacher) %>
         <%= link_to 'Avaliar', new_teacher_rating_path(teacher_id: @teacher.id),
                     class: 'btn btn-primary' %>
       <% end %>
 
-      <% if user_signed_in? && current_user != @teacher.user %>
+      <% if (can? :follow_teacher, Student) && (can? :unfollow_teacher, Student) %>
         <% if current_user.student.following?(@teacher) %>
           <%= link_to 'Deixar de seguir', unfollow_teacher_path(teacher_id: @teacher.id),
                       class: 'btn btn-danger' %>

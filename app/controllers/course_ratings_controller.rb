@@ -3,7 +3,6 @@ class CourseRatingsController < ApplicationController
 
   before_action :find_course_rating, only: [:edit, :update, :destroy]
 
-  # Só pode avaliar se tiver o curso
   def new
     @course_rating = CourseRating.new
     @course_rating.course = Course.find(params[:course_id])

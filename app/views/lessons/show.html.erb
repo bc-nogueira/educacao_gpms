@@ -7,6 +7,6 @@
 <h3 class="mt-3">Descrição:</h3>
 <p><%= @lesson.description %></p>
 
-<% if current_user.teacher == @lesson.course.teacher %>
+<% if can? :edit, @lesson %>
   <%= link_to 'Editar aula', edit_lesson_path(@lesson), class: 'btn btn-primary' %>
 <% end %>
