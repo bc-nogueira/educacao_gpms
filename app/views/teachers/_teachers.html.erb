@@ -13,7 +13,7 @@
           <%= link_to 'Perfil', teacher_path(teacher), class: 'btn btn-primary' %>
 
           <% if user_signed_in? &&
-              teacher.teaches?(current_user.student) &&
+              teacher.teaches_student?(current_user.student) &&
               !current_user.student.rated_teacher?(teacher) %>
           <%= link_to 'Avaliar', new_teacher_rating_path(teacher_id: teacher.id),
                       class: 'btn btn-primary' %>

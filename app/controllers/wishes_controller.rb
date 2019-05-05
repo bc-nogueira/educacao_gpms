@@ -1,4 +1,6 @@
 class WishesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @wishes = Wish.by_student(current_user.student)
   end

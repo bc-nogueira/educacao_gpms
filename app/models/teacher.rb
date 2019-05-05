@@ -20,8 +20,12 @@ class Teacher < ApplicationRecord
     user.name
   end
 
-  def teaches?(student)
+  def teaches_student?(student)
     courses.each { |course| return true if course.students.include? student }
     false
+  end
+
+  def teaches_course?(course)
+    self.courses.include? course
   end
 end

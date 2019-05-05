@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  load_and_authorize_resource
+
   def show
     @student = Student.find(params[:id])
   end

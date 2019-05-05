@@ -11,27 +11,19 @@ Rails.application.routes.draw do
     resources :notifications, only: [:index, :update, :destroy]
     resources :orders, only: [:show] do
       collection do
+        get 'add_course'
         get 'student_orders'
       end
       member do
         delete 'remove_course'
-        get 'add_course'
         get 'finalize'
         get 'pay'
       end
     end
     resources :teachers, only: [:new, :create]
     resources :teacher_ratings, only: [:new, :create, :edit, :update, :destroy]
-
     get 'follow_teacher', to: 'students#follow_teacher'
     get 'unfollow_teacher', to: 'students#unfollow_teacher'
-
-    # resources :students, only: [:index] do
-    #   member do
-    #     get 'follow_teacher'
-    #     get 'unfollow_teacher'
-    #   end
-    # end
     resources :wishes, only: [:index, :create, :destroy] do
       collection { delete 'destroy_all' }
     end

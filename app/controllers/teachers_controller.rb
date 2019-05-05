@@ -1,4 +1,8 @@
 class TeachersController < ApplicationController
+  load_and_authorize_resource
+
+  before_action :already_teacher?, only: [:new, :create]
+
   def index
     @teachers = Teacher.all
   end
@@ -19,6 +23,12 @@ class TeachersController < ApplicationController
   end
 
   private
+
+  def already_teacher?
+    return unless current_user.teacher?
+    flash[:error] = 'Você já é professor.'
+    redirect_to root_path
+  end
 
   def teacher_params
     params.require(:teacher).permit(:user_id, :phone_number)

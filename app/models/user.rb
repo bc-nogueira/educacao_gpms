@@ -14,6 +14,10 @@ class User < ApplicationRecord
 
   enum gender: [:female, :male, :other]
 
+  def student?
+    student.present?
+  end
+
   def teacher?
     teacher.present?
   end

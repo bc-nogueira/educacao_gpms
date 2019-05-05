@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_order, only: :add_course
   before_action :find_order, only: [:remove_course, :pay, :finalize]
 
@@ -11,14 +13,13 @@ class OrdersController < ApplicationController
   end
 
   def add_course
-    @order = set_order
-    @order.course_orders.create(course_id: params[:id])
+    @order.course_orders.create(course_id: params[:course_id])
     flash[:notice] = 'Curso adicionado ao carrinho.'
     redirect_to order_path(id: @order.id)
   end
 
   def remove_course
-    @order.course_orders.by_course(params[:id]).first.destroy
+    @order.course_orders.by_course(params[:course_id]).first.destroy
     if @order.course_orders.any?
       flash[:notice] = 'Curso excluído do carrinho'
       redirect_to order_path(id: @order.id)

@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  load_and_authorize_resource
+
   before_action :find_course, only: [:show, :edit, :update]
 
   def index

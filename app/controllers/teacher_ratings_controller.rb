@@ -1,4 +1,6 @@
 class TeacherRatingsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :find_teacher_rating, only: [:edit, :update, :destroy]
 
   def new

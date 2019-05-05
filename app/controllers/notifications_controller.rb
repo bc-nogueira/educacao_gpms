@@ -1,5 +1,8 @@
 class NotificationsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :find_notification, only: [:update, :destroy]
+
   def index
     @notifications = Notification.by_student(helpers.current_user.student.id)
   end

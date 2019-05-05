@@ -17,14 +17,15 @@
     <span class="text-muted ml-2" style="font-size: 0.8rem;">ALUNO</span>
     <%= link_to 'Perfil Aluno', student_path(current_user.student), class: 'dropdown-item' %>
 
-    <% if current_user.student.notifications.unread.any? %>
+    <% if current_user.student.notifications.any? %>
       <%= link_to notifications_path, class: 'dropdown-item' do %>
         Notificações
-        <span class="badge badge-danger ml-2">
-          <%= current_user.student.notifications.unread.size %>
-        </span>
+        <% if current_user.student.notifications.unread.any? %>
+          <span class="badge badge-danger ml-2">
+            <%= current_user.student.notifications.unread.size %>
+          </span>
+        <% end %>
       <% end %>
-      </a>
     <% end %>
 
     <% if current_user.student.courses.exists? %>

@@ -41,6 +41,8 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'active_link_to', '~> 1.0', '>= 1.0.5'
 # Framework CSS
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+# Authorization library
+gem 'cancancan'
 # Authentication
 gem 'devise', '~> 4.6', '>= 4.6.2'
 # jQuery mask

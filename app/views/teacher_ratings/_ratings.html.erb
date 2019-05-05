@@ -10,7 +10,7 @@
             <%= link_to rate.student.name, student_path(rate.student.id) %>
             </span>
         </div>
-        <% if user_signed_in? && rate.student == current_user.student %>
+        <% if (can? :edit, rate) && (can? :destroy, rate) %>
           <div class="card-footer d-flex justify-content-between">
             <%= link_to 'Editar', edit_teacher_rating_path(rate), class: 'btn btn-primary' %>
 
