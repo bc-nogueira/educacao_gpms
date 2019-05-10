@@ -12,7 +12,7 @@
 
           <span class="text-muted">
             em
-            <%= rate.created_at.strftime("%-d/%m/%Y") %>
+            <%= rate.created_at.strftime("%d/%m/%Y") %>
           </span>
         </div>
         <% if (can? :edit, rate) && (can? :destroy, rate) %>

@@ -27,6 +27,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_discount
-    @discount = Discount.active.first
+    @active_discount = Discount.active.first
   end
 end

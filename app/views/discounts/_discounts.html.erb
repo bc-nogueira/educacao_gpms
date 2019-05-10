@@ -1,0 +1,25 @@
+<table class="table mb-0">
+  <thead>
+  <tr>
+    <th scope="col">Título</th>
+    <th scope="col">Desconto</th>
+    <th scope="col">Início</th>
+    <th scope="col">Fim</th>
+    <th scope="col">Excluir</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @discounts.each do |discount| %>
+    <tr>
+      <td><%= discount.title %></td>
+      <td><%= discount.discount %></td>
+      <td><%= discount.start_date.strftime("%d/%m/%Y") %></td>
+      <td><%= discount.end_date.strftime("%d/%m/%Y") %></td>
+      <td>
+        <%= link_to 'Excluir', discount_path(discount), method: :delete,
+                    data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

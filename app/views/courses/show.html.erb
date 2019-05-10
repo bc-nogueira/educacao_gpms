@@ -7,10 +7,10 @@
       </span>
 
       <span class="text-muted">
-        Criado em: <%= @course.created_at.strftime("%-d/%m/%Y") %>
+        Criado em: <%= @course.created_at.strftime("%d/%m/%Y") %>
       </span>
       <span class="text-muted">
-        Última atualização: <%= @course.updated_at.strftime("%-d/%m/%Y") %>
+        Última atualização: <%= @course.updated_at.strftime("%d/%m/%Y") %>
       </span>
       <span class="text-muted"><%= @course.students.size %> aluno(s)</span>
     </div>

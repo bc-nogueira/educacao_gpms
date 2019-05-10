@@ -1,0 +1,51 @@
+<div class="card w-75 mx-auto mt-3">
+  <div class="card-header">
+    <h3 class="mb-0">Novo Desconto</h3>
+  </div>
+  <%= form_with model: @discount, local: true do |f| %>
+    <div class="card-body">
+      <% if @discount.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <h5>A validação falhou:</h5>
+
+          <ul class="mb-0">
+            <% @discount.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control', required: true %>
+          </div>
+          <div class="col-6">
+            <%= f.label :discount %>
+            <%= f.number_field :discount, class: 'form-control', required: true,
+                               min: 1, max: 100, step: 1 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <%= f.label :start_date %>
+            <%= f.date_field :start_date, class: 'form-control', required: true %>
+          </div>
+          <div class="col-6">
+            <%= f.label :end_date %>
+            <%= f.date_field :end_date, class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= f.submit 'Salvar', class: 'btn btn-success' %>
+      <%= link_to 'Voltar', :back, class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>

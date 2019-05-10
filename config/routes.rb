@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       get 'teacher_courses'
     end
   end
+  resources :discounts, only: [:index, :new, :create, :destroy]
   resources :home, only: :index
   resources :students, only: [:show]
   resources :teachers, only: [:index, :show]

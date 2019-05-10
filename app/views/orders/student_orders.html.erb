@@ -32,7 +32,7 @@
           </table>
 
           <h5>Total <%= number_to_currency order.course_orders.sum(&:final_price) %></h5>
-          <span>Realizado em <%= order.created_at.strftime("%-d/%m/%Y as %H:%M") %></span>
+          <span>Realizado em <%= order.created_at.strftime("%d/%m/%Y as %H:%M") %></span>
         </div>
       </div>
     </div>
