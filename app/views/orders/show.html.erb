@@ -29,6 +29,7 @@
         Total: <%= number_to_currency(@order.total_price(@active_discount)) %>
       </h3>
       <%= link_to 'Finalizar Compra', pay_order_path, class: 'btn btn-success' %>
+      <%= link_to 'Continuar Comprando', courses_path, class: 'btn btn-primary' %>
     </div>
     <% if @active_discount.present? %>
       <div class="card">
@@ -46,5 +47,3 @@
     Seu carrinho está vazio!
   </div>
 <% end %>
-
-
