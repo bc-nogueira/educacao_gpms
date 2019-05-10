@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  watched: false
+  student: one
+  lesson: one
+
+two:
+  watched: false
+  student: two
+  lesson: two

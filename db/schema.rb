@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_235908) do
+ActiveRecord::Schema.define(version: 2019_05_10_014043) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,16 @@ ActiveRecord::Schema.define(version: 2019_04_18_235908) do
     t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
     t.index ["follower_id", "follower_type"], name: "fk_follows"
     t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
+  end
+
+  create_table "lesson_students", force: :cascade do |t|
+    t.boolean "watched"
+    t.integer "student_id"
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_students_on_lesson_id"
+    t.index ["student_id"], name: "index_lesson_students_on_student_id"
   end
 
   create_table "lessons", force: :cascade do |t|

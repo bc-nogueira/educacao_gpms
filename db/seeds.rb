@@ -1,6 +1,10 @@
+User.create(name: 'Admin', email: 'admin@gmail.com', password: '123456',
+                    birthdate: Date.today - 20.years, cpf: '33333333333',
+                    gender: :male, admin: true)
+
 breno = User.create(name: 'Breno', email: 'breno@gmail.com', password: '123456',
                     birthdate: Date.today - 20.years, cpf: '11111111111',
-                    gender: :male, admin: true)
+                    gender: :male)
 
 joao = User.create(name: 'Joao', email: 'joao@gmail.com', password: '123456',
                     birthdate: Date.today - 20.years, cpf: '22222222222',

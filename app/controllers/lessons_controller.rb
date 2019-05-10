@@ -4,6 +4,7 @@ class LessonsController < ApplicationController
   load_and_authorize_resource
 
   before_action :find_lesson, only: [:show, :edit, :update, :destroy]
+  before_action :teste, only: :show
 
   def show
     @playlist = VideoInfo.new(@lesson.video_url)
@@ -49,5 +50,12 @@ class LessonsController < ApplicationController
 
   def find_lesson
     @lesson = Lesson.find(params[:id])
+  end
+
+  def teste
+    user = helpers.current_user
+    return if user.teacher? && user.teacher == @lesson.course.teacher
+    return if LessonStudent.by_student(user.student).by_lesson(@lesson).present?
+    LessonStudent.create(student: user.student, lesson: @lesson, watched: true)
   end
 end

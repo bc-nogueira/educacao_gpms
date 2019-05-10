@@ -1,6 +1,7 @@
 class Lesson < ApplicationRecord
   belongs_to :course
 
+  has_many :lesson_students
   has_many :notifications
 
   validates :title, :position, :video_url, :description, presence: true
