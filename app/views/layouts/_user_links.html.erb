@@ -56,9 +56,11 @@
       <div class="dropdown-divider"></div>
     <% end %>
 
-    <span class="text-muted ml-2" style="font-size: 0.8rem;">ADMIN</span>
-    <%= link_to 'Descontos', discounts_path, class: 'dropdown-item' %>
-    <div class="dropdown-divider"></div>
+    <% if current_user.admin %>
+      <span class="text-muted ml-2" style="font-size: 0.8rem;">ADMIN</span>
+      <%= link_to 'Descontos', discounts_path, class: 'dropdown-item' %>
+      <div class="dropdown-divider"></div>
+    <% end %>
 
     <%= link_to 'Sair', destroy_user_session_path, method: :delete,
                 class: 'dropdown-item' %>

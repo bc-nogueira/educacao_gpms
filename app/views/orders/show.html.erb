@@ -26,16 +26,16 @@
   <div class="d-flex justify-content-between">
     <div>
       <h3>
-        Total: <%= number_to_currency(@order.total_price(@discount)) %>
+        Total: <%= number_to_currency(@order.total_price(@active_discount)) %>
       </h3>
       <%= link_to 'Finalizar Compra', pay_order_path, class: 'btn btn-success' %>
     </div>
-    <% if @discount.present? %>
+    <% if @active_discount.present? %>
       <div class="card">
         <div class="card-header">Desconto aplicado</div>
         <div class="card-body">
           <h5 class="mb-0">
-            <%= "#{@discount.title}: #{@discount.discount}%" %>
+            <%= "#{@active_discount.title}: #{@active_discount.discount}%" %>
           </h5>
         </div>
       </div>

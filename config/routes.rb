@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :courses, only: [:new, :create, :edit, :update]
     resources :course_ratings, only: [:new, :create, :edit, :update, :destroy]
+    resources :discounts, only: [:index, :new, :create, :destroy]
     resources :lessons, only: [:show, :new, :create, :edit, :update, :destroy]
     resources :notifications, only: [:index, :update, :destroy]
     resources :orders, only: [:show] do
@@ -37,7 +38,6 @@ Rails.application.routes.draw do
       get 'teacher_courses'
     end
   end
-  resources :discounts, only: [:index, :new, :create, :destroy]
   resources :home, only: :index
   resources :students, only: [:show]
   resources :teachers, only: [:index, :show]

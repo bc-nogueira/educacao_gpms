@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_235908) do
     t.string "cpf", null: false
     t.integer "gender", null: false
     t.string "name", null: false
+    t.boolean "admin", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

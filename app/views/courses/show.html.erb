@@ -18,9 +18,9 @@
 
   <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
     <%= render partial: 'courses/show_price', locals: { course: @course } %>
-    <% if @discount.present? %>
+    <% if @active_discount.present? %>
       <div class="alert alert-info mb-0">
-        Desconto aplicado: <%= @discount.title %>
+        Desconto aplicado: <%= @active_discount.title %>
       </div>
     <% end %>
   </div>

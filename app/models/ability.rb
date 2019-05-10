@@ -8,6 +8,7 @@ class Ability
     can :show, Student
     can [:index, :show], Teacher
     return if user.nil?
+    can :manage, Discount if user.admin
     # Abilities for student
     can [:new, :create], CourseRating do
       course_id = params[:course_id] || params[:course_rating][:course_id]
