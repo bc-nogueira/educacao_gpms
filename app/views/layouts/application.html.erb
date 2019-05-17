@@ -15,6 +15,7 @@
       <%= render 'layouts/navbar' %>
     </header>
     <%= render 'layouts/banner' if home_controller? %>
+    <%= render 'layouts/sidebar' if user_signed_in? %>
     <div class="content <%= 'padding-from-navbar' unless home_controller? %>">
       <main role="main" class="container bg-white p-0">
         <%= render 'layouts/discount_message' %>
@@ -23,11 +24,11 @@
           <%= yield %>
         </div>
       </main>
-      <footer class="footer bg-primary text-white">
-        <div class="container">
-          Colocar conteúdo aqui.
-        </div>
-      </footer>
     </div>
+    <footer class="footer bg-primary text-white">
+      <div class="container">
+        Colocar conteúdo aqui.
+      </div>
+    </footer>
   </body>
 </html>

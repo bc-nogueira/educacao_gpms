@@ -1,0 +1,110 @@
+<nav class="sidebar">
+  <div class="mt-3 pb-3 border-bottom">
+    <span class="sidebar-section-title">ALUNO</span>
+    <ul class="mt-2">
+      <li>
+        <%= link_to student_path(current_user.student) do %>
+          <%= icon 'fas', 'user-graduate', class: 'sidebar-icons' %>
+          <span class="nav-text">Perfil Aluno</span>
+        <% end %>
+      </li>
+
+      <% if current_user.student.courses.exists? %>
+        <li class="mt-2">
+          <%= link_to student_courses_courses_path do %>
+            <%= icon 'fas', 'book-reader', class: 'sidebar-icons' %>
+            <span class="nav-text">Meus Cursos</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if current_user.student.orders.closed.exists? %>
+        <li class="mt-2">
+          <%= link_to student_orders_orders_path do %>
+            <%= icon 'fas', 'clipboard-list', class: 'sidebar-icons' %>
+            <span class="nav-text">Meus Pedidos</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if current_user.student.wishes.any? %>
+        <li class="mt-2">
+          <%= link_to wishes_path do %>
+            <%= icon 'fas', 'user-alt', class: 'sidebar-icons' %>
+            <span class="nav-text">Meus Pedidos</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if current_user.student.notifications.any? %>
+        <li class="mt-2">
+          <%= link_to notifications_path do %>
+            <%= icon 'fas', 'bell', class: 'sidebar-icons' %>
+            <span class="nav-text">Notificações
+              <% if current_user.student.notifications.unread.any? %>
+                <span class="badge badge-danger ml-2">
+                  <%= current_user.student.notifications.unread.size %>
+                </span>
+              <% end %>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if has_order? %>
+        <li class="mt-2">
+          <%= link_to order_path(current_order.id) do %>
+            <%= icon 'fas', 'shopping-cart', class: 'sidebar-icons' %>
+            <span class="nav-text">Carrinho</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="mt-3">
+    <span class="sidebar-section-title">PROFESSOR</span>
+    <ul class="mt-2">
+      <% if current_user.teacher? %>
+        <li>
+          <%= link_to teacher_path(current_user.teacher) do %>
+            <%= icon 'fas', 'chalkboard-teacher', class: 'sidebar-icons' %>
+            <span class="nav-text">Perfil Professor</span>
+          <% end %>
+        </li>
+
+        <li class="mt-2">
+          <%= link_to teacher_courses_courses_path do %>
+            <%= icon 'fas', 'chalkboard', class: 'sidebar-icons' %>
+            <span class="nav-text">Minhas Turmas</span>
+          <% end %>
+        </li>
+
+        <li class="mt-2">
+          <%= link_to new_course_path do %>
+            <%= icon 'fas', 'plus', class: 'sidebar-icons' %>
+            <span class="nav-text">Novo Curso</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% unless current_user.teacher? %>
+        <li class="mt-2">
+          <%= link_to new_course_path do %>
+            <%= icon 'fas', 'chalkboard-teacher', class: 'sidebar-icons' %>
+            <span class="nav-text">Quero ser Professor</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <ul class="logout">
+    <li>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= icon 'fas', 'sign-out-alt', class: 'sidebar-icons' %>
+        <span class="nav-text">Sair</span>
+      <% end %>
+    </li>
+  </ul>
+</nav>

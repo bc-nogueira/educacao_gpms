@@ -46,6 +46,7 @@ gem 'cancancan'
 # Authentication
 gem 'devise', '~> 4.6', '>= 4.6.2'
 # jQuery mask
+gem 'font-awesome-sass', '~> 5.8', '>= 5.8.1'
 gem 'jquery_mask_rails', '~> 0.1.0'
 # jQuery for Bootstrap
 gem 'jquery-rails'
