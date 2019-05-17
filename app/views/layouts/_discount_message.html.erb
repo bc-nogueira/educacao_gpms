@@ -1,13 +1,11 @@
 <% if @active_discount.present? %>
   <div class="text-center py-2" id="discount-msg">
-    <h1 class="ml2">
+    <h4 class="ml2">
       Aproveite o desconto <%= @active_discount.title %>!
-    </h1>
+    </h4>
 
-    <h1 class="ml2">
+    <h4 class="ml2">
       <%= @active_discount.discount %>% de desconto em todos os cursos!
-    </h1>
+    </h4>
   </div>
 <% end %>
-
-
