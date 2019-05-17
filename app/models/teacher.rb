@@ -28,4 +28,13 @@ class Teacher < ApplicationRecord
   def teaches_course?(course)
     self.courses.include? course
   end
+
+  def average_rate
+    return -1 if teacher_ratings.empty?
+    teacher_ratings.sum(&:rate) / teacher_ratings.size
+  end
+
+  def students
+    courses.sum(&:students).length
+  end
 end

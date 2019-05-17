@@ -49,6 +49,8 @@ gem 'devise', '~> 4.6', '>= 4.6.2'
 gem 'jquery_mask_rails', '~> 0.1.0'
 # jQuery for Bootstrap
 gem 'jquery-rails'
+# carousel
+gem "jquery-slick-rails"
 # Rating with stars
 gem 'rateyo-rails'
 gem 'video_info', '~> 2.7'

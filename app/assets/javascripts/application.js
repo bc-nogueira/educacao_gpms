@@ -17,5 +17,6 @@
 //= require bootstrap-sprockets
 //= require jquery.mask
 //= require jquery.rateyo
+//= require jquery.slick
 //= require turbolinks
 //= require_tree .

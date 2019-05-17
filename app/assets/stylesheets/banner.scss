@@ -1,0 +1,43 @@
+#banner {
+  padding-top: 56px;
+  height: 450px;
+  background-color: #323232;
+}
+
+#banner-container {
+  background-image: url("https://cdn-images-1.medium.com/max/1600/0*WW-iV1yoPWqUcd5H.");
+  //background-image: url("https://www.um.edu.mt/__data/assets/image/0012/338898/varieties/banner.jpg");
+  //background-size: cover;
+  //background-attachment: fixed;
+}
+
+.text-raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.slick-arrow::before {
+  font-size: 22px;
+}
+
+.slick-dots li button::before {
+  font-size: 20px;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.slick-dots li.slick-active button::before {
+  color: #fff;
+  opacity: 1;
+}
+
+.teacher_picture_banner {
+  width: 192px;
+  height: 192px;
+}
+
+.course_picture_banner {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+}
