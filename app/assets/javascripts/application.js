@@ -16,6 +16,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require animejs
+//= require alertify
+//= require alertify/confirm-ujs
 //= require jquery.mask
 //= require jquery.rateyo
 //= require jquery.slick
