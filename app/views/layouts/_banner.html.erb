@@ -1,61 +1,12 @@
-<% well_evaluated_courses(@courses) %>
-
 <div id="banner">
   <div id="banner-container" class="container text-white h-100">
+    <% if @well_evaluated.present? %>
+      <%= render 'layouts/well_evaluated_courses' %>
+    <% else %>
+      <h1>Venha estudar conosco!</h1>
+      <h2>TODO: Falar quantos cursos, quantos alunos e quantos professores</h2>
+    <% end %>
 
-    <h1 class="text-center text-raleway">Cursos
-      <span
-        class="txt-rotate text-raleway"
-        data-period="2000"
-        data-rotate='[ "em destaque", "mais bem avaliados"]'></span>
-    </h1>
-
-    <div class="slick-carousel">
-
-      <% well_evaluated_courses(@courses).each do |course| %>
-        <div>
-          <div class="row">
-            <div class="col-8 d-flex flex-column justify-content-around">
-              <div class="d-flex align-items-end">
-                <h2 class="mb-0"><%= course.name %></h2>
-
-                <div class="ml-5 d-flex align-items-center">
-                  <div class="average-rate-banner mb-1" data-rate="<%= course.average_rate %>"></div>
-                  <h5 class="mb-0">
-                    <%= "(#{course.course_ratings.length} #{'avaliação'.pluralize(course.course_ratings.length)})"%>
-                  </h5>
-                </div>
-              </div>
-              <h4><%= "#{course.students.length} #{'aluno'.pluralize(course.students.length)}" %></h4>
-
-              <div class="d-flex">
-                <img src="http://i64.tinypic.com/344qrzd.jpg" alt="Teacher Profile Picture"
-                     class="teacher_picture_banner">
-                <div class="ml-5 d-flex flex-column">
-                  <h3><%= course.teacher.name %></h3>
-
-                  <h5>
-                    <%= "#{course.teacher.students} #{'aluno'.pluralize(course.teacher.students)}" %>
-                  </h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="average-rate-banner mb-1" data-rate="<%= course.teacher.average_rate %>"></div>
-                    <h5 class="mb-0">
-                      <%= "(#{course.teacher.teacher_ratings.length} #{'avaliação'.pluralize(course.teacher.teacher_ratings.length)})" %>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-4 d-flex justify-content-center align-items-center">
-              <img src="https://www.portalgsti.com.br/media/uploads/marcomascarenhas/ruby-on-rails.png"
-                   alt="Course picture" class="course_picture_banner">
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>
 
