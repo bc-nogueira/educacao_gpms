@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary teste">
   <a class="navbar-brand" href="#">UFFEMY</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -24,10 +24,10 @@
     <% else %>
       <%= active_link_to t('devise.registrations.new.sign_up'),
                          new_user_registration_path,
-                         class: 'btn btn-outline-light my-2 my-sm-0' %>
+                         class: 'btn btn-light my-2 my-sm-0 btn-navbar' %>
       <%= active_link_to t('devise.sessions.new.sign_in'),
                          new_user_session_path,
-                         class: 'btn btn-outline-light my-2 ml-2 my-sm-0' %>
+                         class: 'btn btn-light my-2 ml-2 my-sm-0 btn-navbar' %>
     <% end %>
 
   </div>
