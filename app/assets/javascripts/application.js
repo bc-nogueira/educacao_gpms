@@ -15,6 +15,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require animejs
 //= require jquery.mask
 //= require jquery.rateyo
 //= require jquery.slick

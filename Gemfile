@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # Rails view helper to manage "active" state of a link
 gem 'active_link_to', '~> 1.0', '>= 1.0.5'
+gem 'rails-assets-animejs', source: 'https://rails-assets.org'
 # Framework CSS
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 # Authorization library
