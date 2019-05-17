@@ -14,11 +14,12 @@
     <header>
       <%= render 'layouts/navbar' %>
     </header>
-    <%= render 'layouts/banner' if home_controller? %>
     <%= render 'layouts/sidebar' if user_signed_in? %>
-    <div class="content <%= 'padding-from-navbar' unless home_controller? %>">
+    <div class="padding-from-navbar"></div>
+    <%= render 'layouts/discount_message' %>
+    <%= render 'layouts/banner' if home_controller? %>
+    <div class="content">
       <main role="main" class="container bg-white p-0">
-        <%= render 'layouts/discount_message' %>
         <div class="p-3">
           <%= render 'layouts/messages' %>
           <%= yield %>
