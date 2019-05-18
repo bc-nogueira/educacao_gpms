@@ -14,10 +14,6 @@ body {
   min-height: calc(100vh - 204px);
 }
 
-//main {
-//  flex: 1 0 auto;
-//}
-
 .footer {
   flex-shrink: 0;
   height: 60px;
@@ -35,4 +31,11 @@ body {
 
 .padding-from-navbar {
   padding-top: 56px;
+}
+
+.lists-card-title {
+  height: 70px;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  overflow: hidden;
 }
