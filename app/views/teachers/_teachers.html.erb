@@ -1,22 +1,35 @@
 <div class="row">
   <% teachers.each do |teacher| %>
-    <div class="col-12 col-sm-6 col-xl-4 mb-4">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title mb-0"><%= teacher.name %></h5>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+      <div class="card" style="width: 220px; height: 380px;">
+        <div class="p-2 text-center">
+          <% if teacher.gender == 'male' %>
+            <img src="http://i64.tinypic.com/344qrzd.jpg"
+                 alt="Teacher picture" class="card-img-top" style="width: 190px; height: 190px;">
+          <% else %>
+            <img src="http://i64.tinypic.com/2im57q9.png"
+                 alt="Teacher picture" class="card-img-top" style="width: 190px; height: 190px;">
+          <% end %>
         </div>
-        <div class="card-body">
-          <h6 class="card-subtitle"><%= teacher.courses.count %> curso(s)</h6>
-          <p class="card-text"><%= teacher.followers_count %> seguidor(es)</p>
-        </div>
-        <div class="card-footer d-flex justify-content-between">
-          <%= link_to 'Perfil', teacher_path(teacher), class: 'btn btn-primary' %>
 
-          <% if user_signed_in? &&
-              teacher.teaches_student?(current_user.student) &&
-              !current_user.student.rated_teacher?(teacher) %>
-          <%= link_to 'Avaliar', new_teacher_rating_path(teacher_id: teacher.id),
-                      class: 'btn btn-primary' %>
+        <div class="card-body pt-1 pb-2">
+          <h3 class="card-title mb-1">
+            <%= link_to teacher.name, teacher_path(teacher) %>
+          </h3>
+          <h4 class="mb-1">
+            <%= "#{teacher.courses.size} #{'curso'.pluralize(teacher.courses.size)}" %>
+          </h4>
+          <h6 class="mb-2">
+            <%= "#{teacher.followers_count} #{'seguidor'.pluralize(teacher.followers_count)}" %>
+          </h6>
+
+          <% if teacher.average_rate == -1 %>
+            <div class="alert alert-warning mb-0 mt-1" style="font-size: 1rem">Sem avaliação!</div>
+          <% else %>
+            <div class="course-average-rate mb-1" data-rate="<%= teacher.average_rate %>"></div>
+            <span class="text-muted">
+              <%= "(#{teacher.teacher_ratings.size} #{'avaliação'.pluralize(teacher.teacher_ratings.size)})" %>
+            </span>
           <% end %>
         </div>
       </div>

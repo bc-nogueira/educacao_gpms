@@ -19,7 +19,9 @@
             <div class="alert alert-warning mb-0 mt-1" style="font-size: 1rem">Sem avaliação!</div>
           <% else %>
             <div class="course-average-rate mb-1" data-rate="<%= course.average_rate %>"></div>
-            <span class="text-muted">(<%= course.course_ratings.size %> avaliações)</span>
+            <span class="text-muted">
+              <%= "(#{course.course_ratings.size} #{'avaliação'.pluralize(course.course_ratings.size)})" %>
+            </span>
           <% end %>
         </div>
         <div class="card-footer bg-white">
