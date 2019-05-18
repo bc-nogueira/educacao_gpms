@@ -5,7 +5,6 @@ $( document ).on("turbolinks:load", function() {
             const message = "Essa ação não poderá ser desfeita.";
             alertify.confirm(title, message,
                 function(){
-                    debugger;
                     $.ajax({
                         url: "/lessons/" + $("#destroyLesson").data("id"),
                         data: { authenticity_token: $('[name="csrf-token"]')[0].content},
