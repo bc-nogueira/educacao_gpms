@@ -7,7 +7,7 @@ $( document ).on("turbolinks:load", function() {
                 function(){
                     debugger;
                     $.ajax({
-                        url: "/course_ratings/" + $("#destroyTeacherRating").data("id"),
+                        url: "/teacher_ratings/" + $("#destroyTeacherRating").data("id"),
                         data: { authenticity_token: $('[name="csrf-token"]')[0].content},
                         method: 'DELETE',
                     });
