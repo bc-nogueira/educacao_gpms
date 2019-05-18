@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_discount
-  skip_before_action :set_discount, if: :devise_controller?
 
   before_action do
     resource = controller_path.singularize.gsub('/', '_').to_sym
