@@ -36,6 +36,11 @@
       <%= f.label :syllabus %>
       <%= f.text_area :syllabus, class: 'form-control', required: true %>
     </div>
+
+    <div class="form-group">
+      <%= f.label :image, 'Imagem' %>
+      <%= f.file_field :image, multiple: false %><br /><br />
+    </div>
   </div>
   <div class="card-footer">
     <%= f.submit 'Salvar', class: 'btn btn-success' %>

@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one :student
   has_one :teacher
 
+  has_one_attached :avatar
+
   accepts_nested_attributes_for :student
 
   validates :name, :gender, :birthdate, presence: true

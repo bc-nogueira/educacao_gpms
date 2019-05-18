@@ -50,11 +50,14 @@ gem 'cancancan'
 gem 'devise', '~> 4.6', '>= 4.6.2'
 # jQuery mask
 gem 'font-awesome-sass', '~> 5.8', '>= 5.8.1'
+# Images storage
+gem "google-cloud-storage", "~> 1.11", require: false
 gem 'jquery_mask_rails', '~> 0.1.0'
 # jQuery for Bootstrap
 gem 'jquery-rails'
 # carousel
 gem "jquery-slick-rails"
+gem "mini_magick"
 # Rating with stars
 gem 'rateyo-rails'
 gem 'video_info', '~> 2.7'

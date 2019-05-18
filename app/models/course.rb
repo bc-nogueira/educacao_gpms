@@ -11,6 +11,8 @@ class Course < ApplicationRecord
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :students
 
+  has_one_attached :image
+
   validates :name, :price, :description, :syllabus, presence: true
   validates :name, uniqueness: true
 

@@ -1,3 +1,5 @@
+puts ' ### Start seeding'
+
 admin = User.create(name: 'Admin', email: 'admin@gmail.com', password: '123456',
                     birthdate: Date.today - 20.years, cpf: '33333333333',
                     gender: :male, admin: true)
@@ -24,3 +26,5 @@ Course.create(name: 'Rails', description: 'Rails', syllabus: 'Rails',
 
 Course.create(name: 'PHP', description: 'PHP', syllabus: 'PHP', price: 200,
               teacher: teacher)
+
+puts ' ### Finished seeding'

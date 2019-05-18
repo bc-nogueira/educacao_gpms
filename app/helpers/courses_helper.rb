@@ -3,8 +3,8 @@ module CoursesHelper
     user_signed_in? && course.teacher == current_user.teacher
   end
 
-  # def well_evaluated_courses(courses)
-  #   courses = courses.select { |course| course.average_rate >= 4 }[0..4]
-  #   courses.sort_by{ |course| [course.average_rate]}.reverse
-  # end
+  def course_image(course)
+    return course.image if course.image.attached?
+    'https://bit.ly/30uT964'
+  end
 end

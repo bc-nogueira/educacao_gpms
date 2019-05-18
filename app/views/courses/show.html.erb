@@ -1,32 +1,46 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-sm-12 col-lg-6">
-      <div class="d-flex flex-column justify-content-between h-100">
-        <span class="font-weight-bold" style="font-size: 1.8rem;"><%= @course.name %></span>
-        <span class="font-weight-bold" style="font-size: 1.2rem;">
+    <div class="col-12 col-sm-6 text-center">
+      <%= image_tag course_image(@course), style: 'height: 300px; width: 300px' %>
+    </div>
+    <div class="col-12 col-sm-6 d-flex flex-column">
+      <span class="font-weight-bold" style="font-size: 1.8rem;"><%= @course.name %></span>
+      <span class="font-weight-bold" style="font-size: 1.2rem;">
         Professor(a) <%= link_to @course.teacher.name, teacher_path(@course.teacher) %>
       </span>
-
-        <span class="text-muted">
+      <span class="text-muted mt-2">
         Criado em: <%= @course.created_at.strftime("%d/%m/%Y") %>
       </span>
-        <span class="text-muted">
+      <span class="text-muted mt-2">
         Última atualização: <%= @course.updated_at.strftime("%d/%m/%Y") %>
       </span>
-        <span class="text-muted"><%= @course.students.size %> aluno(s)</span>
-      </div>
-    </div>
+      <span class="text-muted mt-2">
+        <%= "#{@course.students.size} #{'aluno'.pluralize(@course.students.size)}" %>
+      </span>
 
-    <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
-      <%= render partial: 'courses/show_price', locals: { course: @course } %>
-      <% if @active_discount.present? %>
-        <div class="alert alert-info mb-0">
-          Desconto aplicado: <%= @active_discount.title %>
-        </div>
+      <% unless @course.average_rate == -1 %>
+        <div class="course-average-rate mt-3" data-rate="<%= @course.average_rate %>"></div>
+        <span class="text-muted">
+          <%= "(#{@course.course_ratings.size} #{'avaliação'.pluralize(@course.course_ratings.size)})" %>
+        </span>
       <% end %>
     </div>
+  </div>
 
-    <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
+  <div class="row mt-3">
+    <div class="col-12 col-sm-6 row align-items-center">
+      <div class="col-6">
+        <%= render partial: 'courses/show_price', locals: { course: @course } %>
+      </div>
+      <div class="col-12 col-sm-6">
+        <% if @active_discount.present? %>
+          <div class="alert alert-info mb-0">
+            Desconto aplicado: <%= @active_discount.title %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-6 d-flex justify-content-between align-items-center">
       <%= render partial: 'courses/buttons_show', locals: { course: @course } %>
     </div>
   </div>
