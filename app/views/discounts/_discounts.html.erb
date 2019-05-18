@@ -16,8 +16,10 @@
       <td><%= discount.start_date.strftime("%d/%m/%Y") %></td>
       <td><%= discount.end_date.strftime("%d/%m/%Y") %></td>
       <td>
-        <%= link_to 'Excluir', discount_path(discount), method: :delete,
-                    data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+        <% binding.pry %>
+        <button class="btn btn-danger" id="destroyDiscount" data-id="<%= discount.id %>">
+          Excluir
+        </button>
       </td>
     </tr>
   <% end %>

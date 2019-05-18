@@ -1,12 +1,13 @@
 $( document ).on("turbolinks:load", function() {
     if($("#destroyWish").length > 0) {
         $(document).on("click", "#destroyWish", function() {
+            const id = $(this).data("id");
             const title = "Deseja excluir esse curso da lista de desejos?";
             const message = "Essa ação não poderá ser desfeita.";
             alertify.confirm(title, message,
                 function(){
                     $.ajax({
-                        url: "/wishes/" + $("#destroyWish").data("id"),
+                        url: "/wishes/" + id,
                         data: { authenticity_token: $('[name="csrf-token"]')[0].content},
                         method: 'DELETE',
                     });

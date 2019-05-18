@@ -10,8 +10,12 @@ body {
   background-color: #F5F5F5;
 }
 
-.content {
+.content-with-discount {
   min-height: calc(100vh - 204px);
+}
+
+.content-without-discount {
+  min-height: calc(100vh - 116px);
 }
 
 .footer {
