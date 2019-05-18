@@ -3,10 +3,28 @@
     <% if @well_evaluated.present? %>
       <%= render 'layouts/well_evaluated_courses' %>
     <% else %>
-      <h1>Venha estudar conosco!</h1>
-      <h2>TODO: Falar quantos cursos, quantos alunos e quantos professores</h2>
+      <div>
+        <h1 class="pt-2 text-center">Venha estudar conosco!</h1>
+        <div class="mt-4 d-flex justify-content-between">
+          <div class="banner-item">
+            <%= icon 'fas', 'book-open', class: 'fa-9x' %>
+            <h3><%= "#{@courses.length} #{'Curso'.pluralize(@courses.length)}" %></h3>
+          </div>
+          <div class="banner-item">
+            <%= icon 'fas', 'user-graduate', class: 'fa-9x' %>
+            <h3><%= "#{User.all.length} #{'Aluno'.pluralize(User.all.length)}" %></h3>
+          </div>
+          <div class="banner-item">
+            <%= icon 'fas', 'chalkboard-teacher', class: 'fa-9x' %>
+            <h3><%= "#{@teachers.length} #{'Professor'.pluralize(@teachers.length)}" %></h3>
+          </div>
+          <div class="banner-item">
+            <%= icon 'fas', 'chalkboard', class: 'fa-9x' %>
+            <h3><%= "#{Lesson.all.length} #{'Aula'.pluralize(Lesson.all.length)}" %></h3>
+          </div>
+        </div>
+      </div>
     <% end %>
-
   </div>
 </div>
 
