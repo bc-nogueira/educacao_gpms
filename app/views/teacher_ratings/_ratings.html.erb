@@ -18,8 +18,9 @@
           <div class="card-footer d-flex justify-content-between">
             <%= link_to 'Editar', edit_teacher_rating_path(rate), class: 'btn btn-primary' %>
 
-            <%= link_to 'Excluir', teacher_rating_path(rate), class: 'btn btn-danger',
-                        method: :delete, data: { confirm: 'Tem certeza?' } %>
+            <button class="btn btn-danger" id="destroyTeacherRating" data-id="<%= rate.id %>">
+              Excluir
+            </button>
           </div>
         <% end %>
       </div>
