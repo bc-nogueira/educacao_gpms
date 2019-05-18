@@ -19,9 +19,7 @@
         <%= active_link_to 'Professores', teachers_path, class: 'nav-link' %>
       </li>
     </ul>
-    <% if user_signed_in? %>
-      <%= render 'layouts/user_links' %>
-    <% else %>
+    <% unless user_signed_in? %>
       <%= active_link_to t('devise.registrations.new.sign_up'),
                          new_user_registration_path,
                          class: 'btn btn-light my-2 my-sm-0 btn-navbar' %>
