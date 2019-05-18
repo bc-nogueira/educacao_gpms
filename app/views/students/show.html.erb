@@ -1,44 +1,46 @@
-<div class="d-flex justify-content-between align-items-center">
-  <h1>Aluno</h1>
-  <% if user_signed_in? && current_user.student == @student %>
-    <a href="#" class="btn btn-success">Editar perfil</a>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Aluno</h1>
+    <% if user_signed_in? && current_user.student == @student %>
+      <a href="#" class="btn btn-success">Editar perfil</a>
+    <% end %>
+  </div>
+
+  <hr />
+  <div class="row my-4">
+    <div class="col-5 text-center">
+      <% if @student.user.gender == 'male' %>
+        <%= image_tag 'http://i64.tinypic.com/344qrzd.jpg', class: 'img-fluid' %>
+      <% else %>
+        <%= image_tag 'http://i64.tinypic.com/2im57q9.png', class: 'img-fluid' %>
+      <% end %>
+    </div>
+
+    <div class="col-7">
+      <h2><%= @student.name %></h2>
+
+      <%= render 'students/information' %>
+    </div>
+  </div>
+
+  <hr />
+
+  <h2 class="mb-3">Cursos (inscrito)</h2>
+  <% if @student.courses.any? %>
+    <%= render partial: 'courses/courses', locals: { courses: @student.courses } %>
+  <% else %>
+    <div class="alert alert-warning">
+      O aluno ainda não está matriculado em nenhum curso.
+    </div>
+  <% end %>
+
+  <% if user_signed_in? && current_user.student == @student && @student.follow_count > 0 %>
+    <hr />
+    <h3 class="mb-3">Seguindo</h3>
+    <ul>
+      <% @student.all_following.each do |teacher| %>
+        <li><%= link_to teacher.name, teacher_path(teacher) %></li>
+      <% end %>
+    </ul>
   <% end %>
 </div>
-
-<hr />
-<div class="row my-4">
-  <div class="col-5 text-center">
-    <% if @student.user.gender == 'male' %>
-      <%= image_tag 'http://i64.tinypic.com/344qrzd.jpg', class: 'img-fluid' %>
-    <% else %>
-      <%= image_tag 'http://i64.tinypic.com/2im57q9.png', class: 'img-fluid' %>
-    <% end %>
-  </div>
-
-  <div class="col-7">
-    <h2><%= @student.name %></h2>
-
-    <%= render 'students/information' %>
-  </div>
-</div>
-
-<hr />
-
-<h2 class="mb-3">Cursos (inscrito)</h2>
-<% if @student.courses.any? %>
-  <%= render partial: 'courses/courses', locals: { courses: @student.courses } %>
-<% else %>
-  <div class="alert alert-warning">
-    O aluno ainda não está matriculado em nenhum curso.
-  </div>
-<% end %>
-
-<% if user_signed_in? && current_user.student == @student && @student.follow_count > 0 %>
-  <hr />
-  <h3 class="mb-3">Seguindo</h3>
-  <ul>
-    <% @student.all_following.each do |teacher| %>
-      <li><%= link_to teacher.name, teacher_path(teacher) %></li>
-    <% end %>
-  </ul>
-<% end %>

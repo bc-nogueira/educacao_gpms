@@ -1,9 +1,11 @@
-<h1>Professores</h1>
-<hr />
-<% if @teachers.any? %>
-  <%= render partial: 'teachers/teachers', locals: { teachers: @teachers } %>
-<% else %>
-  <div class="alert alert-warning">
-    Não existem professores cadastrados!
-  </div>
-<% end %>
+<div class="container">
+  <h1>Professores</h1>
+  <hr />
+  <% if @teachers.any? %>
+    <%= render partial: 'teachers/teachers', locals: { teachers: @teachers } %>
+  <% else %>
+    <div class="alert alert-warning">
+      Não existem professores cadastrados!
+    </div>
+  <% end %>
+</div>

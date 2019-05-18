@@ -1,62 +1,64 @@
-<div class="row">
-  <div class="col-12 col-sm-12 col-lg-6">
-    <div class="d-flex flex-column justify-content-between h-100">
-      <span class="font-weight-bold" style="font-size: 1.8rem;"><%= @course.name %></span>
-      <span class="font-weight-bold" style="font-size: 1.2rem;">
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-lg-6">
+      <div class="d-flex flex-column justify-content-between h-100">
+        <span class="font-weight-bold" style="font-size: 1.8rem;"><%= @course.name %></span>
+        <span class="font-weight-bold" style="font-size: 1.2rem;">
         Professor(a) <%= link_to @course.teacher.name, teacher_path(@course.teacher) %>
       </span>
 
-      <span class="text-muted">
+        <span class="text-muted">
         Criado em: <%= @course.created_at.strftime("%d/%m/%Y") %>
       </span>
-      <span class="text-muted">
+        <span class="text-muted">
         Última atualização: <%= @course.updated_at.strftime("%d/%m/%Y") %>
       </span>
-      <span class="text-muted"><%= @course.students.size %> aluno(s)</span>
+        <span class="text-muted"><%= @course.students.size %> aluno(s)</span>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
+      <%= render partial: 'courses/show_price', locals: { course: @course } %>
+      <% if @active_discount.present? %>
+        <div class="alert alert-info mb-0">
+          Desconto aplicado: <%= @active_discount.title %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
+      <%= render partial: 'courses/buttons_show', locals: { course: @course } %>
     </div>
   </div>
 
-  <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
-    <%= render partial: 'courses/show_price', locals: { course: @course } %>
-    <% if @active_discount.present? %>
-      <div class="alert alert-info mb-0">
-        Desconto aplicado: <%= @active_discount.title %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-between">
-    <%= render partial: 'courses/buttons_show', locals: { course: @course } %>
-  </div>
-</div>
-
-<div class="card mt-3">
-  <div class="card-header d-flex justify-content-between">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#informations">Informações</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#lessons">Aulas</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <div class="tab-content">
-      <div class="tab-pane active p-3" id="informations">
-        <%= render 'courses/information' %>
-      </div>
-      <div class="tab-pane fade p-3" id="lessons">
-        <%= render 'lessons/lessons' %>
+  <div class="card mt-3">
+    <div class="card-header d-flex justify-content-between">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#informations">Informações</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#lessons">Aulas</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="tab-content">
+        <div class="tab-pane active p-3" id="informations">
+          <%= render 'courses/information' %>
+        </div>
+        <div class="tab-pane fade p-3" id="lessons">
+          <%= render 'lessons/lessons' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<h3 class="mt-3">Avaliações</h3>
-<% if @course.course_ratings.exists? %>
-  <%= render partial: 'course_ratings/ratings',
-             locals: { rates: @course.course_ratings } %>
-<% else %>
-  <div class="alert alert-warning">O curso ainda não tem avaliações.</div>
-<% end %>
+  <h3 class="mt-3">Avaliações</h3>
+  <% if @course.course_ratings.exists? %>
+    <%= render partial: 'course_ratings/ratings',
+               locals: { rates: @course.course_ratings } %>
+  <% else %>
+    <div class="alert alert-warning">O curso ainda não tem avaliações.</div>
+  <% end %>
+</div>

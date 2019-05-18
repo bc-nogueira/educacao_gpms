@@ -1,16 +1,18 @@
-<div class="card">
-  <div class="card-header">
-    <div class="d-flex justify-content-between align-items-center">
-      <h1 class="mb-0">Descontos</h1>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="mb-0">Descontos</h1>
 
-      <%= link_to 'Novo', new_discount_path, class: 'btn btn-success' %>
+        <%= link_to 'Novo', new_discount_path, class: 'btn btn-success' %>
+      </div>
     </div>
-  </div>
-  <div class="card-body p-0">
-    <% if @discounts.present? %>
-      <%= render 'discounts/discounts' %>
-    <% else %>
-      <div class="alert alert-warning m-3">Não existem descontos</div>
-    <% end %>
+    <div class="card-body p-0">
+      <% if @discounts.present? %>
+        <%= render 'discounts/discounts' %>
+      <% else %>
+        <div class="alert alert-warning m-3">Não existem descontos</div>
+      <% end %>
+    </div>
   </div>
 </div>

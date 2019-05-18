@@ -1,21 +1,23 @@
-<div class="card">
-  <div class="card-header">
-    <h3 class="mb-0">Lista de Desejos</h3>
-  </div>
-  <div class="card-body">
-    <ul class="list-group">
-      <% @wishes.each do |wish| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <h5><%= link_to wish.course.name, course_path(wish.course) %></h5>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="mb-0">Lista de Desejos</h3>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <% @wishes.each do |wish| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <h5><%= link_to wish.course.name, course_path(wish.course) %></h5>
 
-          <%= link_to 'Remover', wish_path(wish), method: :delete,
-                      data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="card-footer">
-    <%= link_to 'Limpar lista', destroy_all_wishes_path, method: :delete,
-                data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+            <%= link_to 'Remover', wish_path(wish), method: :delete,
+                        data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Limpar lista', destroy_all_wishes_path, method: :delete,
+                  data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+    </div>
   </div>
 </div>

@@ -1,49 +1,52 @@
-<h1>Carrinho</h1>
+<div class="container">
+  <h1>Carrinho</h1>
 
-<% if has_order? && current_order.courses.any? %>
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col" class="w-50">Curso</th>
-      <th scope="col" class="w-25">Preço</th>
-      <th scope="col" class="w-25">Remover</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @order.courses.each do |course| %>
+  <% if has_order? && current_order.courses.any? %>
+    <table class="table">
+      <thead>
       <tr>
-        <td><%= course.name %></td>
-        <td><%= render partial: 'orders/show_price', locals: { course: course } %></td>
-        <td>
-          <%= link_to 'Remover', remove_course_order_path(course_id: course.id), method: :delete,
-                      data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
-        </td>
+        <th scope="col" class="w-50">Curso</th>
+        <th scope="col" class="w-25">Preço</th>
+        <th scope="col" class="w-25">Remover</th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+      <% @order.courses.each do |course| %>
+        <tr>
+          <td><%= course.name %></td>
+          <td><%= render partial: 'orders/show_price', locals: { course: course } %></td>
+          <td>
+            <%= link_to 'Remover', remove_course_order_path(course_id: course.id), method: :delete,
+                        data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-  <div class="d-flex justify-content-between">
-    <div>
-      <h3>
-        Total: <%= number_to_currency(@order.total_price(@active_discount)) %>
-      </h3>
-      <%= link_to 'Finalizar Compra', pay_order_path, class: 'btn btn-success' %>
-      <%= link_to 'Continuar Comprando', courses_path, class: 'btn btn-primary' %>
-    </div>
-    <% if @active_discount.present? %>
-      <div class="card">
-        <div class="card-header">Desconto aplicado</div>
-        <div class="card-body">
-          <h5 class="mb-0">
-            <%= "#{@active_discount.title}: #{@active_discount.discount}%" %>
-          </h5>
-        </div>
+    <div class="d-flex justify-content-between">
+      <div>
+        <h3>
+          Total: <%= number_to_currency(@order.total_price(@active_discount)) %>
+        </h3>
+        <%= link_to 'Finalizar Compra', pay_order_path, class: 'btn btn-success' %>
+        <%= link_to 'Continuar Comprando', courses_path, class: 'btn btn-primary' %>
       </div>
-    <% end %>
-  </div>
-<% else %>
-  <div class="alert alert-warning">
-    Seu carrinho está vazio!
-  </div>
-<% end %>
+      <% if @active_discount.present? %>
+        <div class="card">
+          <div class="card-header">Desconto aplicado</div>
+          <div class="card-body">
+            <h5 class="mb-0">
+              <%= "#{@active_discount.title}: #{@active_discount.discount}%" %>
+            </h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-warning">
+      Seu carrinho está vazio!
+    </div>
+  <% end %>
+
+</div>

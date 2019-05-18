@@ -1,72 +1,75 @@
-<div class="d-flex justify-content-between align-items-center">
-  <h1>Professor</h1>
-  <% if user_signed_in? && current_user.teacher == @teacher %>
-    <a href="#" class="btn btn-success">Editar perfil</a>
-  <% end %>
-</div>
-
-<hr />
-<div class="row my-4">
-  <div class="col-5 text-center">
-    <% if @teacher.gender == 'male' %>
-      <%= image_tag 'http://i64.tinypic.com/344qrzd.jpg', class: 'img-fluid' %>
-    <% else %>
-      <%= image_tag 'http://i64.tinypic.com/2im57q9.png', class: 'img-fluid' %>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Professor</h1>
+    <% if user_signed_in? && current_user.teacher == @teacher %>
+      <a href="#" class="btn btn-success">Editar perfil</a>
     <% end %>
   </div>
 
-  <div class="col-7">
-    <h2><%= @teacher.name %></h2>
+  <hr />
+  <div class="row my-4">
+    <div class="col-5 text-center">
+      <% if @teacher.gender == 'male' %>
+        <%= image_tag 'http://i64.tinypic.com/344qrzd.jpg', class: 'img-fluid' %>
+      <% else %>
+        <%= image_tag 'http://i64.tinypic.com/2im57q9.png', class: 'img-fluid' %>
+      <% end %>
+    </div>
 
-    <%= render 'teachers/information' %>
+    <div class="col-7">
+      <h2><%= @teacher.name %></h2>
 
-    <div class="mt-3">
-      <% if user_signed_in? %>
-        <% if can?(:new, TeacherRating) && current_user.teacher != @teacher &&
-            !current_user.student.rated_teacher?(@teacher) %>
-          <%= link_to 'Avaliar', new_teacher_rating_path(teacher_id: @teacher.id),
-                      class: 'btn btn-primary' %>
-        <% end %>
+      <%= render 'teachers/information' %>
 
-        <% if (can? :follow_teacher, Student) && (can? :unfollow_teacher, Student) %>
-          <% if current_user.student.following?(@teacher) %>
-            <%= link_to 'Deixar de seguir', unfollow_teacher_path(teacher_id: @teacher.id),
-                        class: 'btn btn-danger' %>
-          <% else %>
-            <% unless current_user == @teacher.user %>
-              <%= link_to 'Seguir', follow_teacher_path(teacher_id: @teacher.id),
-                          class: 'btn btn-success' %>
+      <div class="mt-3">
+        <% if user_signed_in? %>
+          <% if can?(:new, TeacherRating) && current_user.teacher != @teacher &&
+              !current_user.student.rated_teacher?(@teacher) %>
+            <%= link_to 'Avaliar', new_teacher_rating_path(teacher_id: @teacher.id),
+                        class: 'btn btn-primary' %>
+          <% end %>
+
+          <% if (can? :follow_teacher, Student) && (can? :unfollow_teacher, Student) %>
+            <% if current_user.student.following?(@teacher) %>
+              <%= link_to 'Deixar de seguir', unfollow_teacher_path(teacher_id: @teacher.id),
+                          class: 'btn btn-danger' %>
+            <% else %>
+              <% unless current_user == @teacher.user %>
+                <%= link_to 'Seguir', follow_teacher_path(teacher_id: @teacher.id),
+                            class: 'btn btn-success' %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<hr />
-
-<h2 class="mb-3">Turmas</h2>
-<%= render partial: 'courses/courses', locals: { courses: @teacher.courses } %>
-
-<hr />
-
-<h3 class="mb-3">Avaliações</h3>
-<% if @teacher.teacher_ratings.exists? %>
-  <%= render partial: 'teacher_ratings/ratings',
-             locals: { rates: @teacher.teacher_ratings } %>
-<% else %>
-  <div class="alert alert-warning">Professor(a) ainda não tem avaliações.</div>
-<% end %>
-
-<% if user_signed_in? && current_user.teacher == @teacher && @teacher.followers_count > 0 %>
   <hr />
-  <h3 class="mb-3">Seguidores</h3>
-  <ul>
-    <% @teacher.followers.each do |student| %>
-      <li><%= link_to student.name, student_path(student) %></li>
-    <% end %>
-  </ul>
+
+  <h2 class="mb-3">Turmas</h2>
+  <%= render partial: 'courses/courses', locals: { courses: @teacher.courses } %>
+
+  <hr />
+
+  <h3 class="mb-3">Avaliações</h3>
+  <% if @teacher.teacher_ratings.exists? %>
+    <%= render partial: 'teacher_ratings/ratings',
+               locals: { rates: @teacher.teacher_ratings } %>
+  <% else %>
+    <div class="alert alert-warning">Professor(a) ainda não tem avaliações.</div>
+  <% end %>
+
+  <% if user_signed_in? && current_user.teacher == @teacher && @teacher.followers_count > 0 %>
+    <hr />
+    <h3 class="mb-3">Seguidores</h3>
+    <ul>
+      <% @teacher.followers.each do |student| %>
+        <li><%= link_to student.name, student_path(student) %></li>
+      <% end %>
+    </ul>
 
 
-<% end %>
+  <% end %>
+
+</div>

@@ -1,6 +1,8 @@
-<div class="card w-75 mx-auto mt-3">
-  <div class="card-header">
-    <h3 class="mb-0">Editando avaliação do professor: <%= @teacher_rating.teacher.name %></h3>
+<div class="container">
+  <div class="card w-75 mx-auto mt-3">
+    <div class="card-header">
+      <h3 class="mb-0">Editando avaliação do professor: <%= @teacher_rating.teacher.name %></h3>
+    </div>
+    <%= render 'teacher_ratings/form' %>
   </div>
-  <%= render 'teacher_ratings/form' %>
 </div>

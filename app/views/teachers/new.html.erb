@@ -1,29 +1,31 @@
-<div class="card w-75 mx-auto mt-3">
-  <div class="card-header">
-    <h3 class="mb-0">Novo Professor</h3>
-  </div>
-  <%= form_with model: @teacher, local: true do |f| %>
-    <div class="card-body">
-      <% if @teacher.errors.any? %>
-        <div class="alert alert-danger" role="alert">
-          <h5>A validação falhou:</h5>
+<div class="container">
+  <div class="card w-75 mx-auto mt-3">
+    <div class="card-header">
+      <h3 class="mb-0">Novo Professor</h3>
+    </div>
+    <%= form_with model: @teacher, local: true do |f| %>
+      <div class="card-body">
+        <% if @teacher.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+            <h5>A validação falhou:</h5>
 
-          <ul class="mb-0">
-            <% @teacher.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
+            <ul class="mb-0">
+              <% @teacher.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class="form-group">
+          <%= f.label :phone_number %>
+          <%= f.text_field :phone_number, class: 'form-control', required: true %>
         </div>
-      <% end %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <div class="form-group">
-        <%= f.label :phone_number %>
-        <%= f.text_field :phone_number, class: 'form-control', required: true %>
       </div>
-    </div>
-    <div class="card-footer">
-      <%= f.submit 'Salvar', class: 'btn btn-success' %>
-      <%= link_to 'Voltar', :back, class: 'btn btn-secondary' %>
-    </div>
-  <% end %>
+      <div class="card-footer">
+        <%= f.submit 'Salvar', class: 'btn btn-success' %>
+        <%= link_to 'Voltar', :back, class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
 </div>
