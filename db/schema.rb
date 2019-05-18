@@ -33,18 +33,6 @@ ActiveRecord::Schema.define(version: 2019_05_18_142832) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "categories_courses", id: false, force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "course_id", null: false
-    t.index ["category_id", "course_id"], name: "index_categories_courses_on_category_id_and_course_id"
-  end
-
   create_table "course_orders", force: :cascade do |t|
     t.integer "course_id"
     t.integer "order_id"
