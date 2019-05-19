@@ -7,6 +7,8 @@ class Course < ApplicationRecord
   has_many :notifications
   has_many :orders, through: :course_orders
   has_many :wishes
+  has_many :course_trails
+  has_many :trails, through: :course_trails
 
   has_and_belongs_to_many :students
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_142832) do
+ActiveRecord::Schema.define(version: 2019_05_18_202430) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2019_05_18_142832) do
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_ratings_on_course_id"
     t.index ["student_id"], name: "index_course_ratings_on_student_id"
+  end
+
+  create_table "course_trails", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "trail_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_trails_on_course_id"
+    t.index ["trail_id"], name: "index_course_trails_on_trail_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -160,6 +170,13 @@ ActiveRecord::Schema.define(version: 2019_05_18_142832) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_teachers_on_user_id"
+  end
+
+  create_table "trails", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

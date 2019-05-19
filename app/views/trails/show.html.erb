@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 text-center">
+      <%= image_tag trail_image(@trail), style: 'height: 300px; width: 300px' %>
+    </div>
+    <div class="col-12 col-sm-6 d-flex flex-column justify-content-between">
+      <div class="h-100 d-flex flex-column">
+        <span class="font-weight-bold" style="font-size: 1.8rem;"><%= @trail.title %></span>
+        <span class="text-muted mt-2">
+        <%= "#{@trail.courses.size} #{'curso'.pluralize(@trail.courses.size)}" %>
+      </span>
+        <p><%= @trail.description %></p>
+        <span class="text-muted mt-2">
+        Criado em: <%= @trail.created_at.strftime("%d/%m/%Y") %>
+      </span>
+        <span class="text-muted mt-2">
+        Última atualização: <%= @trail.updated_at.strftime("%d/%m/%Y") %>
+      </span>
+      </div>
+
+      <% if can?(:destroy, Trail) %>
+        <div class="d-flex justify-content-between" style="height: 40px">
+          <%= link_to 'Editar', edit_trail_path(@trail), class: 'btn btn-primary w-30' %>
+          <%= link_to 'Adicionar Curso', new_course_trail_path(trail_id: @trail.id),
+                      class: 'btn btn-success w-30' %>
+
+          <button class="btn btn-danger w-30 destroyTrail" data-id="<%= @trail.id %>">
+            Excluir
+          </button>
+        </div>
+      <% else %>
+        <% if @trail.courses.any? %>
+          <%= link_to 'Adicionar todos os cursos no carrinho',
+                      add_courses_trail_orders_path(courses: courses_to_buy(@trail.courses)),
+                      class: 'btn btn-success' %>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+
+  <h3 class="mt-3">Cursos</h3>
+  <% if @trail.courses.any? %>
+    <%= render 'trails/courses' %>
+  <% else %>
+    <div class="alert alert-warning">
+      Não existem cursos nessa trilha!
+    </div>
+  <% end %>
+</div>

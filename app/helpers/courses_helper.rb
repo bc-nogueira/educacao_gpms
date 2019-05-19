@@ -7,4 +7,11 @@ module CoursesHelper
     return course.image if course.image.attached?
     'https://bit.ly/30uT964'
   end
+
+  def courses_to_buy(courses)
+    courses_to_buy = courses.each.map do |course|
+      course.id unless current_user.student.has_course?(course)
+    end
+    courses_to_buy.compact
+  end
 end

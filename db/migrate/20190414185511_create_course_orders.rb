@@ -3,7 +3,7 @@ class CreateCourseOrders < ActiveRecord::Migration[5.2]
     create_table :course_orders do |t|
       t.references :course, foreign_key: true
       t.references :order, foreign_key: true
-      t.integer :final_price
+      t.decimal :final_price
 
       t.timestamps
     end

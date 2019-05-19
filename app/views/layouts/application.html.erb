@@ -18,7 +18,7 @@
     <div class="padding-from-navbar"></div>
     <%= render 'layouts/discount_message' %>
     <%= render 'layouts/banner' if home_controller? %>
-    <div class="content">
+    <div class="<%= @discount.present? ? 'content-with-discount' : 'content-without-discount' %>">
       <main role="main">
         <div class="pt-3">
           <%= alertify_flash %>

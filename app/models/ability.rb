@@ -7,8 +7,12 @@ class Ability
     can [:index, :show, :search, :student_courses, :teacher_courses], Course
     can :show, Student
     can [:index, :show], Teacher
+    can :read, Trail
+    can :read, CourseTrail
     return if user.nil?
     can :manage, Discount if user.admin
+    can :manage, Trail if user.admin
+    can :manage, CourseTrail if user.admin
     # Abilities for student
     can [:new, :create], CourseRating do
       course_id = params[:course_id] || params[:course_rating][:course_id]

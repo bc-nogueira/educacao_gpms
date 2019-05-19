@@ -16,7 +16,6 @@
       <td><%= discount.start_date.strftime("%d/%m/%Y") %></td>
       <td><%= discount.end_date.strftime("%d/%m/%Y") %></td>
       <td>
-        <% binding.pry %>
         <button class="btn btn-danger" id="destroyDiscount" data-id="<%= discount.id %>">
           Excluir
         </button>

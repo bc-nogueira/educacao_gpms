@@ -1,0 +1,31 @@
+<%= form_with model: @course_trail, local: true do |f| %>
+  <%= f.hidden_field :trail_id, value: @course_trail.trail.id %>
+
+  <div class="card-body">
+    <% if @course_trail.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <h5>A validação falhou:</h5>
+
+        <ul class="mb-0">
+          <% @course_trail.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="alert alert-info">
+      Esse vai ser o <%= @course_trail.trail.course_trails.size + 1 %>º curso da trilha.
+    </div>
+
+    <div class="form-group">
+      <%= f.label :course_id %>
+      <%= f.select :course_id, Course.all.collect { |c| [ c.name, c.id ] },
+                   { include_blank: 'Selecione o curso' },
+                   class: 'form-control', required: true %>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= f.submit 'Salvar', class: 'btn btn-success' %>
+  </div>
+<% end %>

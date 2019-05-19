@@ -8,12 +8,8 @@ pt-BR:
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
     models:
       course: 'Curso'
+      trail: 'Trile'
     attributes:
-      user:
-        birthdate: 'Data de Nascimento'
-        cpf: 'CPF'
-        gender: 'Sexo'
-        name: 'Nome'
       course:
         description: 'Descrição'
         name: 'Nome'
@@ -37,6 +33,14 @@ pt-BR:
       teacher_rating:
         comment: 'Comentário'
         rate: 'Nota'
+      trail:
+        title: 'Título'
+        description: 'Descrição'
+      user:
+        birthdate: 'Data de Nascimento'
+        cpf: 'CPF'
+        gender: 'Sexo'
+        name: 'Nome'
   date:
     abbr_day_names:
       - Dom

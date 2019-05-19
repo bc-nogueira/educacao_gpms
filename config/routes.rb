@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :courses, only: [:new, :create, :edit, :update]
     resources :course_ratings, only: [:new, :create, :edit, :update, :destroy]
+    resources :course_trails, only: [:new, :create, :destroy]
     resources :discounts, only: [:index, :new, :create, :destroy]
     resources :lessons, only: [:show, :new, :create, :edit, :update, :destroy]
     resources :notifications, only: [:index, :update, :destroy]
     resources :orders, only: [:show] do
       collection do
         get 'add_course'
+        get 'add_courses_trail'
         get 'student_orders'
       end
       member do
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
     resources :teacher_ratings, only: [:new, :create, :edit, :update, :destroy]
     get 'follow_teacher', to: 'students#follow_teacher'
     get 'unfollow_teacher', to: 'students#unfollow_teacher'
+    resources :trails
     resources :wishes, only: [:index, :create, :destroy] do
       collection { delete 'destroy_all' }
     end
