@@ -1,0 +1,67 @@
+<% # Clients of this partial must supply the following variables:
+   # comment
+   # user
+%>
+
+<% creator = comment.creator
+   name = Commontator.commontator_name(creator) || ''
+   link = Commontator.commontator_link(creator, main_app) || ''
+   avatar = Commontator.commontator_avatar(creator, self) || ''
+%>
+
+<% can_edit = comment.can_be_edited_by?(user)
+   can_delete = comment.can_be_deleted_by?(user) %>
+
+<div class="comment-full mb-2">
+  <div class="row">
+    <div class="col-3 py-2 d-flex flex-column align-items-center">
+      <span id="comment_<%= comment.id.to_s %>_avatar_span" class="comment_avatar">
+        <%= avatar %>
+      </span>
+      <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
+        <%= link.blank? ? name : link_to(name, link) %>
+      </span>
+    </div>
+    <div class="<%= (can_edit && can_delete) ? 'col-6' : 'col-9' %> py-2 custom-comment-body">
+      <div id="comment_<%= comment.id.to_s %>_body_div">
+        <%= render partial: 'commontator/comments/body',
+                   locals: { comment: comment } %>
+      </div>
+    </div>
+    <% if can_edit && can_delete %>
+      <div class="col-3 py-2 custom-comment-actions">
+        <span id="comment_<%= comment.id.to_s %>_actions_span" class="comment_actions">
+          <%= render partial: 'commontator/comments/actions',
+                     locals: { comment: comment,
+                               user: user } %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-between p-2 custom-comment-dates">
+    <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
+      <%= comment.created_timestamp %>
+    </span>
+    <span id="comment_<%= comment.id.to_s %>_updated_timestamp_span" class="comment_timestamp">
+      <% if comment.is_modified? %>
+        <%= comment.updated_timestamp %>
+      <% end %>
+    </span>
+  </div>
+</div>
+
+<div id="comment_<%= comment.id.to_s %>_div" class="comment">
+  <div id="comment_<%= comment.id.to_s %>_top_div" class="comment_div">
+
+  </div>
+  <div id="comment_<%= comment.id.to_s %>_middle_div" class="comment_div">
+    <span id="comment_<%= comment.id.to_s %>_votes_span" class="comment_votes">
+      <%= render partial: 'commontator/comments/votes',
+                 locals: { comment: comment,
+                           user: user } %>
+    </span>
+  </div>
+  <div id="comment_<%= comment.id.to_s %>_bottom_div" class="comment_div">
+
+  </div>
+</div>

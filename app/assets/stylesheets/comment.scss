@@ -1,0 +1,18 @@
+.comment-full {
+  border: 1px solid #6f6f6f;
+  border-radius: 5px;
+}
+
+.custom-comment-body {
+  border-left: 1px solid #6f6f6f;
+}
+
+.custom-comment-actions {
+  border-left: 1px solid #6f6f6f;
+  display: flex!important;
+  flex-direction: column!important;
+}
+
+.custom-comment-dates {
+  border-top: 1px solid #6f6f6f!important;
+}
