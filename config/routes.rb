@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'home#index'
 
+  mount Commontator::Engine => '/commontator'
 
   # Routes for logged users
   authenticate :user do
+
     resources :courses, only: [:new, :create, :edit, :update]
     resources :course_ratings, only: [:new, :create, :edit, :update, :destroy]
     resources :course_trails, only: [:new, :create, :destroy]

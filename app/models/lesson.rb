@@ -4,6 +4,8 @@ class Lesson < ApplicationRecord
   has_many :lesson_students
   has_many :notifications
 
+  acts_as_commontable dependent: :destroy
+
   validates :title, :position, :video_url, :description, presence: true
 
   # course_id && position

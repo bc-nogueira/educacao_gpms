@@ -1,7 +1,7 @@
 require 'video_info'
 
 class LessonsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   before_action :find_lesson, only: [:show, :edit, :update, :destroy]
   before_action :inform_watch, only: :show

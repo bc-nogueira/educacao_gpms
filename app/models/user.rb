@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  acts_as_commontator
+
   has_one :student
   has_one :teacher
 
@@ -22,5 +24,11 @@ class User < ApplicationRecord
 
   def teacher?
     teacher.present?
+  end
+
+  def user_avatar_url
+    return avatar.service_url if avatar.attached?
+    return 'https://bit.ly/2EhQpzA' if gender == 'male'
+    'https://bit.ly/2Jt3jyO'
   end
 end
