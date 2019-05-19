@@ -1,7 +1,9 @@
 <div class="container">
   <div class="d-flex justify-content-between align-items-center">
     <h1>Trilhas</h1>
-    <%= link_to 'Criar', new_trail_path, class: 'btn btn-success' %>
+    <% if can?(:create, CourseTrail) %>
+      <%= link_to 'Criar', new_trail_path, class: 'btn btn-success' %>
+    <% end %>
   </div>
   <hr />
   <% if @trails.any? %>
