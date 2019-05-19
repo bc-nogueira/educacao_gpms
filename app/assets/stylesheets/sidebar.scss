@@ -8,10 +8,17 @@
   font-size: 24px;
 }
 
+.profile-sidebar {
+  display: none;
+}
 
 .sidebar:hover, nav.sidebar.expanded {
   width:250px;
   overflow:visible;
+
+  .profile-sidebar {
+    display: block;
+  }
 }
 
 .sidebar {
