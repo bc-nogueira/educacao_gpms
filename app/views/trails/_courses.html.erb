@@ -5,7 +5,7 @@
         <%= course_trail.position %>
       </h1>
 
-      <div class="card mx-auto" style="width: 220px; height: 450px;">
+      <div class="card mx-auto <%= course_bought?(course_trail.course) %>" style="width: 220px; height: 450px;">
         <div class="p-2 text-center">
           <%= image_tag course_image(course_trail.course), class: 'card-img-top img-card-list' %>
         </div>

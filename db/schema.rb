@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_202430) do
   create_table "course_orders", force: :cascade do |t|
     t.integer "course_id"
     t.integer "order_id"
-    t.integer "final_price"
+    t.decimal "final_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_orders_on_course_id"

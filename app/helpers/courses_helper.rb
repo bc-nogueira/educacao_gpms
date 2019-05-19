@@ -14,4 +14,9 @@ module CoursesHelper
     end
     courses_to_buy.compact
   end
+
+  def course_bought?(course)
+    return unless user_signed_in?
+    'course_bought' if current_user.student.has_course?(course)
+  end
 end

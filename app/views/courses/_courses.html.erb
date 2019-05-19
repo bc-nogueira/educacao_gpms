@@ -1,7 +1,7 @@
 <div class="row">
   <% courses.each do |course| %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-      <div class="card mx-auto" style="width: 220px; height: 450px;">
+      <div class="card mx-auto <%= course_bought?(course) %>" style="width: 220px; height: 450px;">
         <div class="p-2 text-center">
           <%= image_tag course_image(course), class: 'card-img-top img-card-list' %>
         </div>
