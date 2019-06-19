@@ -29,10 +29,15 @@
           </button>
         </div>
       <% else %>
-        <% if @trail.courses.any? %>
-          <%= link_to 'Adicionar todos os cursos no carrinho',
-                      add_courses_trail_orders_path(courses: courses_to_buy(@trail.courses)),
-                      class: 'btn btn-success' %>
+        <% if user_signed_in? %>
+          <% if @trail.courses.any? %>
+            <%= link_to 'Adicionar todos os cursos no carrinho',
+                        add_courses_trail_orders_path(courses: courses_to_buy(@trail.courses)),
+                        class: 'btn btn-success' %>
+          <% end %>
+          <%= link_to 'Entre para comprar', new_user_session_path,
+                      class: 'btn btn-outline-success' %>
+        <% else %>
         <% end %>
       <% end %>
 
