@@ -2,7 +2,8 @@
   <%= form_tag search_courses_path, method: :get, class: 'form-inline' do %>
     <div class="w-75 mx-auto d-flex justify-content-center">
       <div class="form-group w-75 mr-2">
-        <%= text_field_tag :search, params[:search], class: 'form-control w-100', placeholder: 'Busque qualquer curso' %>
+        <%= text_field_tag :search, params[:search], class: 'form-control w-100',
+                           placeholder: 'Buscar curso por título' %>
       </div>
       <%= submit_tag 'Buscar', class: 'btn btn-primary w-25' %>
     </div>
