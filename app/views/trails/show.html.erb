@@ -35,9 +35,9 @@
                         add_courses_trail_orders_path(courses: courses_to_buy(@trail.courses)),
                         class: 'btn btn-success' %>
           <% end %>
+        <% else %>
           <%= link_to 'Entre para comprar', new_user_session_path,
                       class: 'btn btn-outline-success' %>
-        <% else %>
         <% end %>
       <% end %>
 
