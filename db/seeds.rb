@@ -12,7 +12,7 @@ admin = User.create(name: 'Admin', email: 'admin@gmail.com', password: '123456',
 #                     birthdate: Date.today - 20.years, cpf: '22222222222',
 #                     gender: :male)
 #
-# Student.create(user: admin)
+Student.create(user: admin)
 # Student.create(user: breno)
 # Student.create(user: joao)
 #
