@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   # Routes for logged users
   authenticate :user do
-
     resources :courses, only: [:new, :create, :edit, :update]
     resources :course_ratings, only: [:new, :create, :edit, :update, :destroy]
     resources :course_trails, only: [:new, :create, :destroy]
@@ -29,7 +28,7 @@ Rails.application.routes.draw do
     resources :teacher_ratings, only: [:new, :create, :edit, :update, :destroy]
     get 'follow_teacher', to: 'students#follow_teacher'
     get 'unfollow_teacher', to: 'students#unfollow_teacher'
-    resources :trails
+    resources :trails, only: [:new, :create, :edit, :update, :destroy]
     resources :wishes, only: [:index, :create, :destroy] do
       collection { delete 'destroy_all' }
     end
@@ -44,6 +43,7 @@ Rails.application.routes.draw do
     end
   end
   resources :home, only: :index
+  resources :trails, only: [:index, :show]
   resources :students, only: [:show]
   resources :teachers, only: [:index, :show]
 end

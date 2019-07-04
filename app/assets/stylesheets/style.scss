@@ -38,6 +38,7 @@ body {
 }
 
 .lists-card-title {
+  font-size: 24px;
   height: 70px;
   text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
@@ -72,4 +73,8 @@ body {
 
 .course_bought {
   border: 3px solid #218838;
+}
+
+.bg-gradient {
+  background-image: linear-gradient(to right, #8E2DE2 , #4A00E0);
 }
