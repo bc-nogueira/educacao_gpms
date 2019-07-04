@@ -1,8 +1,8 @@
 # puts ' ### Start seeding'
 #
-# admin = User.create(name: 'Admin', email: 'admin@gmail.com', password: '123456',
-#                     birthdate: Date.today - 20.years, cpf: '33333333333',
-#                     gender: :male, admin: true)
+admin = User.create(name: 'Admin', email: 'admin@gmail.com', password: '123456',
+                    birthdate: Date.today - 20.years, cpf: '33333333333',
+                    gender: :male, admin: true)
 #
 # breno = User.create(name: 'Breno', email: 'breno@gmail.com', password: '123456',
 #                     birthdate: Date.today - 20.years, cpf: '11111111111',
