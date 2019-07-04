@@ -24,8 +24,7 @@
           <h4><%= "#{course.students.length} #{'aluno'.pluralize(course.students.length)}" %></h4>
 
           <div class="d-flex">
-            <img src="http://i64.tinypic.com/344qrzd.jpg" alt="Teacher Profile Picture"
-                 class="teacher_picture_banner">
+            <%= image_tag user_avatar(course.teacher), class: 'teacher_picture_banner' %>
             <div class="ml-5 d-flex flex-column">
               <h3><%= course.teacher.name %></h3>
 
